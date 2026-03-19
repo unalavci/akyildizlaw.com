@@ -265,15 +265,22 @@ const Hero = () => {
           transition={{ duration: 1.2 }}
           className="hidden md:block relative"
         >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper">
             <img 
-              src="/images/office-desk.png" 
-              alt="Akyıldız Law Firm Office" 
-              className="w-full h-full object-cover"
+              src="/images/scroll-bg.png" 
+              alt="Akyıldız Law Tradition" 
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gold/10 backdrop-blur-sm rounded-2xl -z-10" />
+          <div className="absolute -bottom-10 -right-10 w-40 h-40 z-10 drop-shadow-2xl">
+            <img 
+              src="/images/wax-seal.png" 
+              alt="Official Seal" 
+              className="w-full h-full object-contain rotate-12"
+              referrerPolicy="no-referrer"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
@@ -312,8 +319,8 @@ const About = () => {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="/images/office-desk.png" 
-                alt="Akyıldız Law Office" 
+                src="/images/stone-columns.png" 
+                alt="Justice Columns" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -347,11 +354,11 @@ const PracticeAreas = () => {
 
   return (
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none flex items-center justify-center">
         <img 
-          src="/images/scroll-bg.png" 
+          src="/images/wax-seal.png" 
           alt="Practice Background" 
-          className="w-full h-full object-cover"
+          className="w-[80%] h-auto object-contain opacity-50 grayscale"
           referrerPolicy="no-referrer"
         />
       </div>
