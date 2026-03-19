@@ -273,14 +273,6 @@ const Hero = () => {
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-10 -right-10 w-40 h-40 z-10 drop-shadow-2xl">
-            <img 
-              src="/images/wax-seal.png" 
-              alt="Official Seal" 
-              className="w-full h-full object-contain rotate-12"
-              referrerPolicy="no-referrer"
-            />
-          </div>
         </motion.div>
       </div>
     </section>
@@ -319,17 +311,9 @@ const About = () => {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="/images/stone-columns.png" 
-                alt="Justice Columns" 
+                src="/images/office-desk.png" 
+                alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-20 -z-10">
-              <img 
-                src="/images/wax-seal.png" 
-                alt="Seal Decoration" 
-                className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -354,11 +338,11 @@ const PracticeAreas = () => {
 
   return (
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none flex items-center justify-center">
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
         <img 
-          src="/images/wax-seal.png" 
+          src="/images/scroll-bg.png" 
           alt="Practice Background" 
-          className="w-[80%] h-auto object-contain opacity-50 grayscale"
+          className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -366,14 +350,6 @@ const PracticeAreas = () => {
         <div className="text-center mb-20 relative">
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-navy">{t('practice.title')}</h2>
           <div className="w-20 h-1 bg-gold mx-auto mb-8" />
-          <div className="absolute -top-10 -right-10 opacity-20 transform rotate-12">
-            <img 
-              src="/images/wax-seal.png" 
-              alt="Seal" 
-              className="w-32 h-32 md:w-48 md:h-48 object-contain"
-              referrerPolicy="no-referrer"
-            />
-          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
