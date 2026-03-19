@@ -229,7 +229,7 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
+          src="/images/scroll-bg.png" 
           alt="Akyıldız Law Firm Tradition" 
           className="w-full h-full object-cover opacity-20 scale-110"
           referrerPolicy="no-referrer"
@@ -267,7 +267,7 @@ const Hero = () => {
         >
           <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_3.png" 
+              src="/images/office-desk.png" 
               alt="Akyıldız Law Firm Office" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -304,7 +304,7 @@ const About = () => {
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transform md:-rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_4.png" 
+                src="/images/lawyer-portrait.png" 
                 alt="Av. Mehmet Uğur Akyıldız" 
                 className="w-full h-full object-cover object-top"
                 referrerPolicy="no-referrer"
@@ -312,7 +312,7 @@ const About = () => {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_3.png" 
+                src="/images/office-desk.png" 
                 alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -320,7 +320,7 @@ const About = () => {
             </div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-20 -z-10">
               <img 
-                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
+                src="/images/wax-seal.png" 
                 alt="Seal Decoration" 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
@@ -349,7 +349,7 @@ const PracticeAreas = () => {
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <img 
-          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
+          src="/images/scroll-bg.png" 
           alt="Practice Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -361,7 +361,7 @@ const PracticeAreas = () => {
           <div className="w-20 h-1 bg-gold mx-auto mb-8" />
           <div className="absolute -top-10 -right-10 opacity-20 transform rotate-12">
             <img 
-              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
+              src="/images/wax-seal.png" 
               alt="Seal" 
               className="w-32 h-32 md:w-48 md:h-48 object-contain"
               referrerPolicy="no-referrer"
@@ -417,7 +417,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-navy text-white overflow-hidden relative scroll-mt-20">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <img 
-          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_2.png" 
+          src="/images/stone-columns.png" 
           alt="Contact Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -426,7 +426,7 @@ const Contact = () => {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-1/2" />
       <div className="absolute -bottom-20 -left-20 opacity-20 transform -rotate-12">
         <img 
-          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_2.png" 
+          src="/images/stone-columns.png" 
           alt="Scroll Decoration" 
           className="w-64 h-64 md:w-96 md:h-96 object-contain"
           referrerPolicy="no-referrer"
