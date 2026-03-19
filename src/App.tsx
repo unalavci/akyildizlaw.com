@@ -24,47 +24,6 @@ import {
   Instagram
 } from 'lucide-react';
 
-const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 p-4 bg-navy text-white rounded-full shadow-2xl hover:bg-gold transition-colors group"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
-        </motion.button>
-      )}
-    </AnimatePresence>
-  );
-};
-
 const PageLoader = () => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -271,7 +230,7 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
+          src="input_file_0.png" 
           alt="Akyıldız Law Firm Tradition" 
           className="w-full h-full object-cover opacity-20 scale-110"
           referrerPolicy="no-referrer"
@@ -298,8 +257,8 @@ const Hero = () => {
             <h1 className="text-6xl md:text-8xl font-serif leading-[0.9] mb-8 text-navy">
               {t('hero.title')}
             </h1>
-            <p className="text-lg text-navy/70 max-w-md mb-10 leading-relaxed">
-              {t('hero.subtitle')}
+            <p className="text-lg text-navy/70 italic max-w-xl mb-10 leading-relaxed">
+              "{t('hero.slogan')}"
             </p>
           </motion.div>
         </div>
@@ -312,8 +271,8 @@ const Hero = () => {
         >
           <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
-              alt="Akyıldız Law Firm Tradition" 
+              src="input_file_3.png" 
+              alt="Akyıldız Law Firm Office" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -364,7 +323,7 @@ const About = () => {
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transform md:-rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_4.png" 
+                src="input_file_4.png" 
                 alt="Av. Mehmet Uğur Akyıldız" 
                 className="w-full h-full object-cover object-top"
                 referrerPolicy="no-referrer"
@@ -372,7 +331,7 @@ const About = () => {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_3.png" 
+                src="input_file_3.png" 
                 alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -380,7 +339,7 @@ const About = () => {
             </div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-20 -z-10">
               <img 
-                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
+                src="input_file_1.png" 
                 alt="Seal Decoration" 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
@@ -406,14 +365,22 @@ const PracticeAreas = () => {
   ];
 
   return (
-    <section id="practice" className="py-24 bg-paper scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <img 
+          src="input_file_0.png" 
+          alt="Practice Background" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 relative">
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-navy">{t('practice.title')}</h2>
           <div className="w-20 h-1 bg-gold mx-auto mb-8" />
           <div className="absolute -top-10 -right-10 opacity-20 transform rotate-12">
             <img 
-              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
+              src="input_file_1.png" 
               alt="Seal" 
               className="w-32 h-32 md:w-48 md:h-48 object-contain"
               referrerPolicy="no-referrer"
@@ -467,10 +434,18 @@ const Contact = () => {
   
   return (
     <section id="contact" className="py-24 bg-navy text-white overflow-hidden relative scroll-mt-20">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <img 
+          src="input_file_2.png" 
+          alt="Contact Background" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-1/2" />
       <div className="absolute -bottom-20 -left-20 opacity-20 transform -rotate-12">
         <img 
-          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_2.png" 
+          src="input_file_2.png" 
           alt="Scroll Decoration" 
           className="w-64 h-64 md:w-96 md:h-96 object-contain"
           referrerPolicy="no-referrer"
@@ -594,73 +569,36 @@ const Contact = () => {
 const Footer = () => {
   const { t } = useTranslation();
   
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <footer className="py-16 bg-paper border-t border-navy/5">
+    <footer className="py-12 bg-paper border-t border-navy/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <Scale className="w-8 h-8 text-navy" />
-              <span className="font-serif text-2xl font-bold tracking-tighter text-navy">
-                AKYILDIZ<span className="text-gold">LAW</span>
-              </span>
-            </div>
-            <p className="text-navy/60 text-sm max-w-sm mb-6 leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-            <div className="flex gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy/40 hover:bg-gold hover:text-white transition-all">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy/40 hover:bg-gold hover:text-white transition-all">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy/40 hover:bg-gold hover:text-white transition-all">
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-serif font-bold text-navy mb-6">{t('nav.practice')}</h4>
-            <ul className="space-y-4 text-sm text-navy/60">
-              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.corporate')}</a></li>
-              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.criminal')}</a></li>
-              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.family')}</a></li>
-              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.realestate')}</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-serif font-bold text-navy mb-6">{t('contact.title')}</h4>
-            <ul className="space-y-4 text-sm text-navy/60">
-              <li>
-                <a href="tel:+902122962136" className="hover:text-gold transition-colors flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  +90212 296 21 36
-                </a>
-              </li>
-              <li>
-                <a href="mailto:info@akyildizlaw.com" className="hover:text-gold transition-colors flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  info@akyildizlaw.com
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-gold transition-colors">{t('contact.address')}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="pt-8 border-t border-navy/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40">
-            © {new Date().getFullYear()} AKYILDIZ LAW FIRM. {t('footer.rights')}
-          </div>
-          <div className="flex gap-8">
-            <a href="#" className="text-[10px] uppercase tracking-widest font-bold text-navy/40 hover:text-gold transition-colors">
-              {t('footer.privacy')}
+        <div className="flex flex-col items-center gap-8">
+          <div className="flex items-center gap-6">
+            <a 
+              href="mailto:info@akyildizlaw.com"
+              className="w-12 h-12 rounded-full bg-navy text-white flex items-center justify-center hover:bg-gold transition-colors shadow-lg group"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
+            <button 
+              onClick={scrollToTop}
+              className="w-12 h-12 rounded-full bg-gold text-white flex items-center justify-center hover:bg-navy transition-colors shadow-lg group"
+              aria-label="Scroll to top"
+            >
+              <Globe className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
+          
+          <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40 text-center">
+            © {new Date().getFullYear()} AKYILDIZ LAW FIRM. {t('footer.rights')}
           </div>
         </div>
       </div>
@@ -672,7 +610,6 @@ export default function App() {
   return (
     <div className="selection:bg-gold selection:text-white">
       <PageLoader />
-      <ScrollToTop />
       <Navbar />
       <Hero />
       <About />

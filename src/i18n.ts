@@ -13,7 +13,7 @@ const resources = {
       },
       hero: {
         title: 'Adalet ve Güvenin Buluştuğu Nokta',
-        subtitle: 'Akyıldız Hukuk Bürosu olarak, karmaşık hukuki süreçlerinizde profesyonel ve çözüm odaklı yaklaşımımızla yanınızdayız.',
+        slogan: 'Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır.',
         cta: 'Randevu Al'
       },
       about: {
@@ -71,7 +71,7 @@ const resources = {
       },
       hero: {
         title: 'Where Justice Meets Trust',
-        subtitle: 'As Akyildiz Law Firm, we stand by you in your complex legal processes with our professional and solution-oriented approach.',
+        slogan: 'Justice is the horizon of all other virtues and the law of their coexistence.',
         cta: 'Book an Appointment'
       },
       about: {
