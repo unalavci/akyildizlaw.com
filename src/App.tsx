@@ -14,7 +14,6 @@ import {
   ChevronRight,
   Gavel,
   Users,
-  Clock,
   Loader2,
   CheckCircle2,
   ArrowUp,
@@ -230,7 +229,7 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="input_file_0.png" 
+          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
           alt="Akyıldız Law Firm Tradition" 
           className="w-full h-full object-cover opacity-20 scale-110"
           referrerPolicy="no-referrer"
@@ -254,9 +253,6 @@ const Hero = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-6xl md:text-8xl font-serif leading-[0.9] mb-8 text-navy">
-              {t('hero.title')}
-            </h1>
             <p className="text-lg text-navy/70 italic max-w-xl mb-10 leading-relaxed">
               "{t('hero.slogan')}"
             </p>
@@ -271,7 +267,7 @@ const Hero = () => {
         >
           <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="input_file_3.png" 
+              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_3.png" 
               alt="Akyıldız Law Firm Office" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -287,12 +283,6 @@ const Hero = () => {
 const About = () => {
   const { t } = useTranslation();
   
-  const stats = [
-    { icon: Clock, value: '15+', label: t('about.stats.experience') },
-    { icon: Briefcase, value: '1200+', label: t('about.stats.cases') },
-    { icon: Users, value: '500+', label: t('about.stats.clients') },
-  ];
-
   return (
     <section id="about" className="py-24 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
@@ -309,21 +299,12 @@ const About = () => {
             <p className="text-lg text-navy/70 leading-relaxed mb-12">
               {t('about.content')}
             </p>
-            <div className="grid grid-cols-3 gap-8">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="text-center">
-                  <stat.icon className="w-6 h-6 text-gold mx-auto mb-4" />
-                  <div className="text-3xl font-serif font-bold text-navy mb-1">{stat.value}</div>
-                  <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </motion.div>
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transform md:-rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="input_file_4.png" 
+                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_4.png" 
                 alt="Av. Mehmet Uğur Akyıldız" 
                 className="w-full h-full object-cover object-top"
                 referrerPolicy="no-referrer"
@@ -331,7 +312,7 @@ const About = () => {
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="input_file_3.png" 
+                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_3.png" 
                 alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -339,7 +320,7 @@ const About = () => {
             </div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-20 -z-10">
               <img 
-                src="input_file_1.png" 
+                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
                 alt="Seal Decoration" 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
@@ -368,7 +349,7 @@ const PracticeAreas = () => {
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <img 
-          src="input_file_0.png" 
+          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
           alt="Practice Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -380,7 +361,7 @@ const PracticeAreas = () => {
           <div className="w-20 h-1 bg-gold mx-auto mb-8" />
           <div className="absolute -top-10 -right-10 opacity-20 transform rotate-12">
             <img 
-              src="input_file_1.png" 
+              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
               alt="Seal" 
               className="w-32 h-32 md:w-48 md:h-48 object-contain"
               referrerPolicy="no-referrer"
@@ -436,7 +417,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-navy text-white overflow-hidden relative scroll-mt-20">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <img 
-          src="input_file_2.png" 
+          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_2.png" 
           alt="Contact Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -445,7 +426,7 @@ const Contact = () => {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-1/2" />
       <div className="absolute -bottom-20 -left-20 opacity-20 transform -rotate-12">
         <img 
-          src="input_file_2.png" 
+          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_2.png" 
           alt="Scroll Decoration" 
           className="w-64 h-64 md:w-96 md:h-96 object-contain"
           referrerPolicy="no-referrer"
