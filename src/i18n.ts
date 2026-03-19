@@ -28,11 +28,17 @@ const resources = {
       practice: {
         title: 'Faaliyet Alanlarımız',
         corporate: 'Şirketler Hukuku',
+        corporate_desc: 'Kurumsal yönetim, birleşme ve devralmalar süreçlerinde hukuki destek.',
         criminal: 'Ceza Hukuku',
+        criminal_desc: 'Ceza yargılamalarında profesyonel savunma ve temsil hizmetleri.',
         family: 'Aile Hukuku',
+        family_desc: 'Boşanma, velayet ve miras hukukuna ilişkin tüm süreçlerin yönetimi.',
         realestate: 'Gayrimenkul Hukuku',
+        realestate_desc: 'Mülkiyet uyuşmazlıkları ve gayrimenkul işlem yönetimi.',
         labor: 'İş Hukuku',
-        it: 'Bilişim Hukuku'
+        labor_desc: 'İş sözleşmeleri ve işçi-işveren uyuşmazlıklarının çözümü.',
+        it: 'Bilişim Hukuku',
+        it_desc: 'Veri koruma ve siber hukuk alanında danışmanlık hizmetleri.'
       },
       contact: {
         title: 'İletişim',
@@ -76,11 +82,17 @@ const resources = {
       practice: {
         title: 'Practice Areas',
         corporate: 'Corporate Law',
+        corporate_desc: 'Legal support in corporate governance, mergers, and acquisitions.',
         criminal: 'Criminal Law',
+        criminal_desc: 'Professional defense and representation in criminal proceedings.',
         family: 'Family Law',
+        family_desc: 'Management of all processes related to divorce, custody, and inheritance law.',
         realestate: 'Real Estate Law',
+        realestate_desc: 'Property disputes and real estate transaction management.',
         labor: 'Labor Law',
-        it: 'IT Law'
+        labor_desc: 'Resolution of employment contracts and employee-employer disputes.',
+        it: 'IT Law',
+        it_desc: 'Consultancy services in data protection and cyber law.'
       },
       contact: {
         title: 'Contact',

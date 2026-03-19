@@ -62,39 +62,51 @@ const ScrollToTop = () => {
 };
 
 const PageLoader = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = 'auto'; };
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+      document.body.style.overflow = 'auto';
+    }, 3000);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = 'auto';
+    };
   }, []);
 
   return (
-    <motion.div 
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: 1, delay: 2 }}
-      onAnimationComplete={() => document.body.style.overflow = 'auto'}
-      className="fixed inset-0 z-[100] bg-navy flex flex-col items-center justify-center text-white"
-    >
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="flex flex-col items-center"
-      >
-        <Scale className="w-16 h-16 text-gold mb-6 animate-pulse" />
-        <h1 className="font-serif text-4xl font-bold tracking-tighter mb-2">
-          AKYILDIZ<span className="text-gold">LAW</span>
-        </h1>
-        <div className="w-48 h-0.5 bg-white/10 relative overflow-hidden">
-          <motion.div 
-            initial={{ left: '-100%' }}
-            animate={{ left: '100%' }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 h-full w-1/2 bg-gold"
-          />
-        </div>
-      </motion.div>
-    </motion.div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div 
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="fixed inset-0 z-[100] bg-navy flex flex-col items-center justify-center text-white pointer-events-none"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center"
+          >
+            <Scale className="w-16 h-16 text-gold mb-6 animate-pulse" />
+            <h1 className="font-serif text-4xl font-bold tracking-tighter mb-2">
+              AKYILDIZ<span className="text-gold">LAW</span>
+            </h1>
+            <div className="w-48 h-0.5 bg-white/10 relative overflow-hidden">
+              <motion.div 
+                initial={{ left: '-100%' }}
+                animate={{ left: '100%' }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                className="absolute top-0 h-full w-1/2 bg-gold"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -386,12 +398,12 @@ const PracticeAreas = () => {
   const { t } = useTranslation();
   
   const areas = [
-    { icon: Briefcase, title: t('practice.corporate'), desc: 'Corporate governance, mergers, and acquisitions.' },
-    { icon: Scale, title: t('practice.criminal'), desc: 'Defense representation in criminal proceedings.' },
-    { icon: Users, title: t('practice.family'), desc: 'Divorce, custody, and inheritance matters.' },
-    { icon: MapPin, title: t('practice.realestate'), desc: 'Property disputes and transaction management.' },
-    { icon: Shield, title: t('practice.labor'), desc: 'Employment contracts and workplace disputes.' },
-    { icon: Globe, title: t('practice.it'), desc: 'Data protection and cyber law consultancy.' },
+    { icon: Briefcase, title: t('practice.corporate'), desc: t('practice.corporate_desc') },
+    { icon: Scale, title: t('practice.criminal'), desc: t('practice.criminal_desc') },
+    { icon: Users, title: t('practice.family'), desc: t('practice.family_desc') },
+    { icon: MapPin, title: t('practice.realestate'), desc: t('practice.realestate_desc') },
+    { icon: Shield, title: t('practice.labor'), desc: t('practice.labor_desc') },
+    { icon: Globe, title: t('practice.it'), desc: t('practice.it_desc') },
   ];
 
   return (
