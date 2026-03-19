@@ -20,7 +20,12 @@ import {
   Printer,
   Linkedin,
   Twitter,
-  Instagram
+  Instagram,
+  ScrollText,
+  Landmark,
+  Lock,
+  Umbrella,
+  Stethoscope
 } from 'lucide-react';
 
 const PageLoader = () => {
@@ -344,6 +349,12 @@ const PracticeAreas = () => {
     { icon: MapPin, title: t('practice.realestate'), desc: t('practice.realestate_desc') },
     { icon: Shield, title: t('practice.labor'), desc: t('practice.labor_desc') },
     { icon: Globe, title: t('practice.it'), desc: t('practice.it_desc') },
+    { icon: Gavel, title: t('practice.execution'), desc: t('practice.execution_desc') },
+    { icon: ScrollText, title: t('practice.inheritance'), desc: t('practice.inheritance_desc') },
+    { icon: Landmark, title: t('practice.admin'), desc: t('practice.admin_desc') },
+    { icon: Lock, title: t('practice.kvkk'), desc: t('practice.kvkk_desc') },
+    { icon: Umbrella, title: t('practice.insurance'), desc: t('practice.insurance_desc') },
+    { icon: Stethoscope, title: t('practice.health'), desc: t('practice.health_desc') },
   ];
 
   return (
@@ -370,23 +381,31 @@ const PracticeAreas = () => {
           <div className="w-20 h-1 bg-gold mx-auto mb-8" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {areas.map((area, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.05 }}
               viewport={{ once: true }}
-              className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-navy/5 group"
+              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-navy/5 group relative overflow-hidden h-64 flex flex-col justify-center items-center text-center"
             >
-              <div className="w-14 h-14 bg-paper rounded-xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors">
-                <area.icon className="w-6 h-6" />
+              <div className="w-16 h-16 bg-paper rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-all duration-500 transform group-hover:scale-110">
+                <area.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-2xl font-serif mb-4 text-navy">{area.title}</h3>
-              <p className="text-navy/60 text-sm leading-relaxed">
-                {area.desc}
-              </p>
+              <h3 className="text-xl font-serif text-navy group-hover:opacity-0 transition-opacity duration-300 px-4">{area.title}</h3>
+              
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-navy p-8 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+                  <area.icon className="w-5 h-5 text-gold" />
+                </div>
+                <h3 className="text-lg font-serif text-white mb-3">{area.title}</h3>
+                <p className="text-white/80 text-xs leading-relaxed">
+                  {area.desc}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

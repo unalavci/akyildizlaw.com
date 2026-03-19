@@ -32,7 +32,19 @@ const resources = {
         labor: 'İş Hukuku',
         labor_desc: 'İş sözleşmeleri ve işçi-işveren uyuşmazlıklarının çözümü.',
         it: 'Bilişim Hukuku',
-        it_desc: 'Veri koruma ve siber hukuk alanında danışmanlık hizmetleri.'
+        it_desc: 'Veri koruma ve siber hukuk alanında danışmanlık hizmetleri.',
+        execution: 'İcra ve İflas Hukuku',
+        execution_desc: 'Alacak takibi, icra işlemleri ve iflas süreçlerinin yönetimi.',
+        inheritance: 'Miras Hukuku',
+        inheritance_desc: 'Vasiyetname, miras paylaşımı ve veraset ilamı işlemleri.',
+        admin: 'İdare ve Vergi Hukuku',
+        admin_desc: 'İdari davalar, vergi uyuşmazlıkları ve iptal davaları.',
+        kvkk: 'Kişisel Verilerin Korunması',
+        kvkk_desc: 'KVKK uyum süreçleri ve veri güvenliği danışmanlığı.',
+        insurance: 'Sigorta Hukuku',
+        insurance_desc: 'Sigorta poliçeleri ve tazminat uyuşmazlıklarının çözümü.',
+        health: 'Sağlık ve Malpraktis',
+        health_desc: 'Tıbbi uygulama hataları ve hasta-hekim hakları yönetimi.'
       },
       contact: {
         title: 'İletişim',
@@ -84,7 +96,19 @@ const resources = {
         labor: 'Labor Law',
         labor_desc: 'Resolution of employment contracts and employee-employer disputes.',
         it: 'IT Law',
-        it_desc: 'Consultancy services in data protection and cyber law.'
+        it_desc: 'Consultancy services in data protection and cyber law.',
+        execution: 'Execution and Bankruptcy Law',
+        execution_desc: 'Debt collection, execution proceedings, and bankruptcy management.',
+        inheritance: 'Inheritance Law',
+        inheritance_desc: 'Wills, inheritance distribution, and succession certificate procedures.',
+        admin: 'Administrative and Tax Law',
+        admin_desc: 'Administrative lawsuits, tax disputes, and annulment cases.',
+        kvkk: 'Data Protection (KVKK)',
+        kvkk_desc: 'KVKK compliance processes and data security consultancy.',
+        insurance: 'Insurance Law',
+        insurance_desc: 'Resolution of insurance policies and compensation disputes.',
+        health: 'Health and Malpractice Law',
+        health_desc: 'Medical malpractice and patient-physician rights management.'
       },
       contact: {
         title: 'Contact',
