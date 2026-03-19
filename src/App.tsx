@@ -301,22 +301,32 @@ const About = () => {
           </motion.div>
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transform md:-rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
+            <motion.div 
+              whileHover={{ y: -10, rotate: 0, scale: 1.02 }}
+              initial={{ rotate: -2 }}
+              viewport={{ once: true }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transition-all duration-500 border-4 border-white cursor-pointer"
+            >
               <img 
                 src="/images/lawyer-portrait.png" 
                 alt="Av. Mehmet Uğur Akyıldız" 
                 className="w-full h-full object-cover object-top"
                 referrerPolicy="no-referrer"
               />
-            </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
+            </motion.div>
+            <motion.div 
+              whileHover={{ y: -10, rotate: 0, scale: 1.02 }}
+              initial={{ rotate: 2 }}
+              viewport={{ once: true }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 border-4 border-white cursor-pointer"
+            >
               <img 
                 src="/images/office-desk.png" 
                 alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
