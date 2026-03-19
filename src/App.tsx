@@ -346,6 +346,14 @@ const PracticeAreas = () => {
           referrerPolicy="no-referrer"
         />
       </div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-[0.15] pointer-events-none">
+        <img 
+          src="/images/wax-seal.png" 
+          alt="Wax Seal Background" 
+          className="w-full h-full object-contain rotate-12"
+          referrerPolicy="no-referrer"
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 relative">
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-navy">{t('practice.title')}</h2>
