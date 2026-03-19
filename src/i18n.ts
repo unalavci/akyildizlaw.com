@@ -18,7 +18,7 @@ const resources = {
       },
       about: {
         title: 'Hakkımızda',
-        content: 'Akyıldız Hukuk Bürosu, kuruluşundan bu yana müvekkillerine yüksek kalitede hukuki danışmanlık ve avukatlık hizmeti sunmaktadır. Deneyimli kadromuzla, hukukun her alanında etik değerlere bağlı kalarak en etkili çözümleri üretiyoruz.',
+        content: 'Av. Mehmet Uğur Akyıldız 2000 yılında İstanbul’da avukatlığa başlamış, 2004 senesinde Hollanda Rotterdam’da ticaret hukuku üzerine yüksek lisansını (LL.M) tamamlamıştır. Akyıldız Hukuk Bürosu 2008 yılında Av. Mehmet Uğur Akyıldız tarafından kurulmuştur. Büro, nitelikten ödün vermeyen, emeği yücelten, avukatlık geleneğinin felsefi içeriğinin özümlenmesiyle sürdürülmesi gerektiğini savunan, çözüm arayışlarında ısrarcı yaklaşımıyla ve aynı doğrultuyu benimseyen çalışma grubuyla birlikte faaliyet göstermektedir. Av. Mehmet Uğur Akyıldız, Avrupa, Körfez ve Ortadoğu ülkelerinin farklı ölçekli şirketlerine avukatlık hizmeti vermenin yanısıra, birçok uluslararası siyasi kişiyi Türkiye’de temsil etmekte ve danışmanlığını yürütmektedir.',
         stats: {
           experience: 'Yıllık Deneyim',
           cases: 'Tamamlanan Dosya',
@@ -48,12 +48,16 @@ const resources = {
         send: 'Gönder',
         sending: 'Gönderiliyor...',
         success: 'Mesajınız başarıyla gönderildi!',
+        subtitle: 'Hukuki danışmanlık ihtiyacınız için bizimle iletişime geçebilirsiniz. Uzman ekibimiz en kısa sürede size dönüş yapacaktır.',
         address: 'Adres',
         phone: 'Telefon',
+        fax: 'Faks',
         email_label: 'E-posta'
       },
       footer: {
-        rights: 'Tüm hakları saklıdır.'
+        rights: 'Tüm hakları saklıdır.',
+        privacy: 'Gizlilik Politikası',
+        follow: 'Bizi Takip Edin'
       }
     }
   },
@@ -72,7 +76,7 @@ const resources = {
       },
       about: {
         title: 'About Us',
-        content: 'Since its establishment, Akyildiz Law Firm has been providing high-quality legal consultancy and advocacy services to its clients. With our experienced staff, we produce the most effective solutions in all areas of law by adhering to ethical values.',
+        content: 'Attorney Mehmet Uğur Akyıldız started working as a lawyer in Istanbul in 2000 and completed his Master’s degree (LL.M) in Commercial Law in Rotterdam, the Netherlands, in 2004. Founded in 2008 by Attorney Mehmet Uğur Akyıldız, Akyıldız Law Firm operates with a working group that does not compromise on quality and promotes dignified labor. The firm insists on creating solutions and is committed to continuing legal culture and tradition by upholding its core philosophical notions. While providing legal services to companies of various sizes from Europe, Middle East, and the Gulf States, Attorney Mehmet Uğur Akyıldız advises many international political figures and represents them in Turkey.',
         stats: {
           experience: 'Years of Experience',
           cases: 'Completed Cases',
@@ -102,12 +106,16 @@ const resources = {
         send: 'Send',
         sending: 'Sending...',
         success: 'Your message has been sent successfully!',
+        subtitle: 'You can contact us for your legal consultancy needs. Our expert team will get back to you as soon as possible.',
         address: 'Address',
         phone: 'Phone',
+        fax: 'Fax',
         email_label: 'Email'
       },
       footer: {
-        rights: 'All rights reserved.'
+        rights: 'All rights reserved.',
+        privacy: 'Privacy Policy',
+        follow: 'Follow Us'
       }
     }
   }

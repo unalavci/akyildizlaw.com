@@ -17,7 +17,11 @@ import {
   Clock,
   Loader2,
   CheckCircle2,
-  ArrowUp
+  ArrowUp,
+  Printer,
+  Linkedin,
+  Twitter,
+  Instagram
 } from 'lucide-react';
 
 const ScrollToTop = () => {
@@ -267,12 +271,12 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2070" 
-          alt="Law Firm" 
-          className="w-full h-full object-cover opacity-10 scale-110"
+          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
+          alt="Akyıldız Law Firm Tradition" 
+          className="w-full h-full object-cover opacity-20 scale-110"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/90 to-transparent" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
@@ -297,44 +301,24 @@ const Hero = () => {
             <p className="text-lg text-navy/70 max-w-md mb-10 leading-relaxed">
               {t('hero.subtitle')}
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a 
-                href="#contact" 
-                className="bg-navy text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-gold transition-all flex items-center gap-2 group"
-              >
-                {t('hero.cta')}
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a 
-                href="#practice" 
-                className="border border-navy/20 text-navy px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-navy hover:text-white transition-all"
-              >
-                {t('nav.practice')}
-              </a>
-            </div>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.2 }}
           className="hidden md:block relative"
         >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=2070" 
-              alt="Lawyer" 
+              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_0.png" 
+              alt="Akyıldız Law Firm Tradition" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-10 -left-10 bg-white p-8 rounded-2xl shadow-xl max-w-[240px]">
-            <Gavel className="text-gold w-10 h-10 mb-4" />
-            <p className="text-sm font-serif italic text-navy/80">
-              "Adalet, mülkün temelidir."
-            </p>
-          </div>
+          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gold/10 backdrop-blur-sm rounded-2xl -z-10" />
         </motion.div>
       </div>
     </section>
@@ -377,13 +361,28 @@ const About = () => {
             </div>
           </motion.div>
           
-          <div className="relative">
-            <div className="aspect-square rounded-full border border-gold/20 absolute -top-10 -right-10 w-full h-full animate-pulse" />
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transform md:-rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
               <img 
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=2070" 
-                alt="Office" 
+                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_4.png" 
+                alt="Av. Mehmet Uğur Akyıldız" 
+                className="w-full h-full object-cover object-top"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
+              <img 
+                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_3.png" 
+                alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-20 -z-10">
+              <img 
+                src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
+                alt="Seal Decoration" 
+                className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -409,9 +408,17 @@ const PracticeAreas = () => {
   return (
     <section id="practice" className="py-24 bg-paper scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 relative">
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-navy">{t('practice.title')}</h2>
-          <div className="w-20 h-1 bg-gold mx-auto" />
+          <div className="w-20 h-1 bg-gold mx-auto mb-8" />
+          <div className="absolute -top-10 -right-10 opacity-20 transform rotate-12">
+            <img 
+              src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_1.png" 
+              alt="Seal" 
+              className="w-32 h-32 md:w-48 md:h-48 object-contain"
+              referrerPolicy="no-referrer"
+            />
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -461,13 +468,21 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-navy text-white overflow-hidden relative scroll-mt-20">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-1/2" />
+      <div className="absolute -bottom-20 -left-20 opacity-20 transform -rotate-12">
+        <img 
+          src="https://storage.googleapis.com/mcp-prod-models-image-uploads/226837388742/2026-03-19/62259663-0001-4963-888d-e13788970f90/input_file_2.png" 
+          alt="Scroll Decoration" 
+          className="w-64 h-64 md:w-96 md:h-96 object-contain"
+          referrerPolicy="no-referrer"
+        />
+      </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-20">
           <div>
             <h2 className="text-4xl md:text-5xl font-serif mb-8">{t('contact.title')}</h2>
             <p className="text-white/60 mb-12 max-w-md">
-              Hukuki danışmanlık ihtiyacınız için bizimle iletişime geçebilirsiniz. Uzman ekibimiz en kısa sürede size dönüş yapacaktır.
+              {t('contact.subtitle')}
             </p>
 
             <div className="space-y-8">
@@ -477,7 +492,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-widest font-bold text-white/40 mb-1">{t('contact.address')}</div>
-                  <div className="text-sm">Levent, Büyükdere Cd. No:123, 34394 Şişli/İstanbul</div>
+                  <div className="text-sm">Büyükdere Cad, Stad Han, 85/14B, Şişli/İSTANBUL- TÜRKİYE</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -486,7 +501,16 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-widest font-bold text-white/40 mb-1">{t('contact.phone')}</div>
-                  <div className="text-sm">+90 (212) 555 00 00</div>
+                  <div className="text-sm">+90212 296 21 36 (3 lines)</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <Printer className="w-5 h-5 text-gold" />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest font-bold text-white/40 mb-1">{t('contact.fax')}</div>
+                  <div className="text-sm">+90212 233 39 53</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -571,22 +595,73 @@ const Footer = () => {
   const { t } = useTranslation();
   
   return (
-    <footer className="py-12 bg-paper border-t border-navy/5">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex items-center gap-2">
-          <Scale className="w-6 h-6 text-navy" />
-          <span className="font-serif text-xl font-bold tracking-tighter text-navy">
-            AKYILDIZ<span className="text-gold">LAW</span>
-          </span>
-        </div>
-        
-        <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40">
-          © {new Date().getFullYear()} AKYILDIZ LAW FIRM. {t('footer.rights')}
+    <footer className="py-16 bg-paper border-t border-navy/5">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          <div className="col-span-2">
+            <div className="flex items-center gap-2 mb-6">
+              <Scale className="w-8 h-8 text-navy" />
+              <span className="font-serif text-2xl font-bold tracking-tighter text-navy">
+                AKYILDIZ<span className="text-gold">LAW</span>
+              </span>
+            </div>
+            <p className="text-navy/60 text-sm max-w-sm mb-6 leading-relaxed">
+              {t('hero.subtitle')}
+            </p>
+            <div className="flex gap-4">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy/40 hover:bg-gold hover:text-white transition-all">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy/40 hover:bg-gold hover:text-white transition-all">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy/40 hover:bg-gold hover:text-white transition-all">
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-serif font-bold text-navy mb-6">{t('nav.practice')}</h4>
+            <ul className="space-y-4 text-sm text-navy/60">
+              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.corporate')}</a></li>
+              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.criminal')}</a></li>
+              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.family')}</a></li>
+              <li><a href="#practice" className="hover:text-gold transition-colors">{t('practice.realestate')}</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-serif font-bold text-navy mb-6">{t('contact.title')}</h4>
+            <ul className="space-y-4 text-sm text-navy/60">
+              <li>
+                <a href="tel:+902122962136" className="hover:text-gold transition-colors flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  +90212 296 21 36
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@akyildizlaw.com" className="hover:text-gold transition-colors flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  info@akyildizlaw.com
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-gold transition-colors">{t('contact.address')}</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="flex gap-6">
-          <a href="#" className="text-navy/40 hover:text-gold transition-colors"><Mail className="w-5 h-5" /></a>
-          <a href="#" className="text-navy/40 hover:text-gold transition-colors"><Globe className="w-5 h-5" /></a>
+        <div className="pt-8 border-t border-navy/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40">
+            © {new Date().getFullYear()} AKYILDIZ LAW FIRM. {t('footer.rights')}
+          </div>
+          <div className="flex gap-8">
+            <a href="#" className="text-[10px] uppercase tracking-widest font-bold text-navy/40 hover:text-gold transition-colors">
+              {t('footer.privacy')}
+            </a>
+          </div>
         </div>
       </div>
     </footer>
