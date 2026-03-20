@@ -273,37 +273,29 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2 }}
+        <div
           className="hidden md:block relative"
         >
-          <div className="relative group">
-            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative z-10 flex items-center justify-center p-12">
+          <div className="relative">
+            <div className="w-80 h-80 mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-paper relative z-10 flex items-center justify-center p-6">
               {/* Subtle Background Texture/Gradient */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(184,134,11,0.05)_0%,_transparent_70%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(184,134,11,0.03)_0%,_transparent_70%)]" />
               
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="relative w-full h-full flex items-center justify-center"
-              >
+              <div className="relative w-full h-full flex items-center justify-center">
                 <img 
                   src="/images/wax-seal.png" 
                   alt="Akyıldız Official Seal" 
-                  className="w-full h-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.2)] group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
                   referrerPolicy="no-referrer"
                 />
-              </motion.div>
+              </div>
               
               {/* Decorative Corner Accents */}
-              <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-gold/20" />
-              <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-gold/20" />
+              <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-gold/20" />
+              <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-gold/20" />
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -315,15 +307,6 @@ const Manifesto = () => {
 
   return (
     <section className="py-24 bg-paper relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <img 
-          src="/images/wax-seal.png" 
-          alt="" 
-          className="w-full h-full object-contain scale-150 rotate-12"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-      
       <div className="max-w-4xl mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
