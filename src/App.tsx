@@ -1,6 +1,6 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'motion/react';
 import { 
   Scale, 
   Shield, 
@@ -27,6 +27,22 @@ import {
   Umbrella,
   Stethoscope
 } from 'lucide-react';
+
+const ScrollProgressBar = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-gold z-[1000] origin-left"
+      style={{ scaleX }}
+    />
+  );
+};
 
 const PageLoader = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -624,6 +640,7 @@ const Footer = () => {
 export default function App() {
   return (
     <div className="selection:bg-gold selection:text-white">
+      <ScrollProgressBar />
       <PageLoader />
       <Navbar />
       <Hero />
