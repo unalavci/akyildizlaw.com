@@ -236,18 +236,18 @@ const Hero = () => {
         <img 
           src="/images/scroll-bg.png" 
           alt="Akyıldız Law Firm Tradition" 
-          className="w-full h-full object-cover opacity-20 scale-110"
+          className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.05] pointer-events-none">
+        <div className="absolute right-[12%] top-[35%] w-48 h-48 opacity-20 pointer-events-none select-none mix-blend-multiply">
           <img 
             src="/images/wax-seal.png" 
             alt="Wax Seal Background" 
-            className="w-full h-full object-contain rotate-12"
+            className="w-full h-full object-contain -rotate-12"
             referrerPolicy="no-referrer"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/0 to-transparent" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
@@ -256,7 +256,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="inline-block text-gold font-bold uppercase tracking-[0.3em] text-xs"
+            className="inline-block text-gold font-bold uppercase tracking-[0.3em] text-sm"
           >
             Akyıldız Hukuk & Danışmanlık
           </motion.span>
@@ -266,7 +266,7 @@ const Hero = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-lg text-navy/70 italic max-w-xl mb-10 leading-relaxed">
+            <p className="text-2xl md:text-3xl text-navy/80 font-serif italic max-w-2xl mb-10 leading-relaxed">
               "{t('hero.slogan')}"
             </p>
           </motion.div>
@@ -315,10 +315,9 @@ const About = () => {
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div 
-              whileHover={{ y: -10, rotate: 0, scale: 1.02 }}
               initial={{ rotate: -2 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transition-all duration-500 border-4 border-white cursor-pointer"
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transition-all duration-500 border-4 border-white"
             >
               <img 
                 src="/images/lawyer-portrait.png" 
@@ -328,10 +327,9 @@ const About = () => {
               />
             </motion.div>
             <motion.div 
-              whileHover={{ y: -10, rotate: 0, scale: 1.02 }}
               initial={{ rotate: 2 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 border-4 border-white cursor-pointer"
+              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 border-4 border-white"
             >
               <img 
                 src="/images/office-desk.png" 
