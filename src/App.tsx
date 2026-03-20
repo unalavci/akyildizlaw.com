@@ -267,11 +267,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h1 className="text-3xl md:text-5xl text-navy font-serif italic leading-tight text-balance">
+            <h1 className="text-xl md:text-3xl text-navy font-serif italic leading-tight text-balance">
               {t('hero.fullQuote.title')}
             </h1>
             
-            <div className="space-y-6 text-navy/80 font-serif leading-relaxed text-base md:text-lg text-justify max-w-2xl">
+            <div className="space-y-6 text-navy/90 font-serif leading-relaxed text-lg md:text-xl text-justify max-w-2xl">
               <p>{t('hero.fullQuote.p1')}</p>
               <p>{t('hero.fullQuote.p2')}</p>
             </div>
