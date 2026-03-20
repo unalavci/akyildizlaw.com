@@ -144,7 +144,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Scale className={`w-8 h-8 ${isScrolled ? 'text-navy' : 'text-navy'}`} />
+          <Scale className="w-8 h-8 text-navy" />
           <span className="font-serif text-2xl font-bold tracking-tighter text-navy">
             AKYILDIZ<span className="text-gold">LAW</span>
           </span>
@@ -270,13 +270,21 @@ const Hero = () => {
           transition={{ duration: 1.2 }}
           className="hidden md:block relative"
         >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper">
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative">
             <img 
               src="/images/scroll-bg.png" 
               alt="Akyıldız Law Tradition" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-90 z-20">
+              <img 
+                src="/images/wax-seal.png" 
+                alt="Wax Seal" 
+                className="w-full h-full object-contain -rotate-12 drop-shadow-2xl"
+                referrerPolicy="no-referrer"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
@@ -367,14 +375,6 @@ const PracticeAreas = () => {
           referrerPolicy="no-referrer"
         />
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-[0.15] pointer-events-none">
-        <img 
-          src="/images/wax-seal.png" 
-          alt="Wax Seal Background" 
-          className="w-full h-full object-contain rotate-12"
-          referrerPolicy="no-referrer"
-        />
-      </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 relative">
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-navy">{t('practice.title')}</h2>
@@ -444,14 +444,6 @@ const Contact = () => {
         />
       </div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-1/2" />
-      <div className="absolute -bottom-20 -left-20 opacity-20 transform -rotate-12">
-        <img 
-          src="/images/stone-columns.png" 
-          alt="Scroll Decoration" 
-          className="w-64 h-64 md:w-96 md:h-96 object-contain"
-          referrerPolicy="no-referrer"
-        />
-      </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-20">
