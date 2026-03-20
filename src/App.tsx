@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'motion/react';
 import { 
@@ -456,19 +456,47 @@ const Contact = () => {
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Mesaj gönderilemedi.');
+      }
+
       setIsSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
       
       // Reset after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
-    }, 2000);
+    } catch (err) {
+      console.error('Submit error:', err);
+      setError('Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -563,17 +591,41 @@ const Contact = () => {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.name')}</label>
-                      <input required type="text" className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors" />
+                      <input 
+                        required 
+                        type="text" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.email')}</label>
-                      <input required type="email" className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors" />
+                      <input 
+                        required 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors" 
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.message')}</label>
-                    <textarea required rows={4} className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors resize-none" />
+                    <textarea 
+                      required 
+                      rows={4} 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors resize-none" 
+                    />
                   </div>
+                  {error && (
+                    <p className="text-red-500 text-xs font-bold">{error}</p>
+                  )}
                   <button 
                     disabled={isSubmitting}
                     className="w-full bg-navy text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-gold transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
