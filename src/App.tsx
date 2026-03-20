@@ -239,6 +239,14 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-20 scale-110"
           referrerPolicy="no-referrer"
         />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.05] pointer-events-none">
+          <img 
+            src="/images/wax-seal.png" 
+            alt="Wax Seal Background" 
+            className="w-full h-full object-contain rotate-12"
+            referrerPolicy="no-referrer"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/90 to-transparent" />
       </motion.div>
 
@@ -270,21 +278,13 @@ const Hero = () => {
           transition={{ duration: 1.2 }}
           className="hidden md:block relative"
         >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative">
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper">
             <img 
               src="/images/scroll-bg.png" 
               alt="Akyıldız Law Tradition" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-90 z-20">
-              <img 
-                src="/images/wax-seal.png" 
-                alt="Wax Seal" 
-                className="w-full h-full object-contain -rotate-12 drop-shadow-2xl"
-                referrerPolicy="no-referrer"
-              />
-            </div>
           </div>
         </motion.div>
       </div>
