@@ -84,6 +84,8 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    document.documentElement.lang = i18n.language;
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
@@ -102,7 +104,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [i18n.language]);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'tr' ? 'en' : 'tr';
@@ -263,7 +265,7 @@ const Hero = () => {
               {t('hero.fullQuote.title')}
             </h1>
             
-            <div className="space-y-6 text-navy/90 font-serif leading-relaxed text-lg md:text-xl text-justify max-w-2xl">
+            <div className="space-y-6 text-navy/90 font-sans leading-relaxed text-lg md:text-xl text-justify max-w-2xl">
               <p>{t('hero.fullQuote.p1')}</p>
               <p>{t('hero.fullQuote.p2')}</p>
             </div>
@@ -414,14 +416,14 @@ const PracticeAreas = () => {
               <div className="w-16 h-16 bg-paper rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-all duration-500 transform group-hover:scale-110">
                 <area.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-serif text-navy group-hover:opacity-0 transition-opacity duration-300 px-4">{area.title}</h3>
+              <h3 className="text-xl font-sans font-semibold text-navy group-hover:opacity-0 transition-opacity duration-300 px-4">{area.title}</h3>
               
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-navy p-8 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                 <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mb-4">
                   <area.icon className="w-5 h-5 text-gold" />
                 </div>
-                <h3 className="text-lg font-serif text-white mb-3">{area.title}</h3>
+                <h3 className="text-lg font-sans font-semibold text-white mb-3">{area.title}</h3>
                 <p className="text-white/80 text-xs leading-relaxed">
                   {area.desc}
                 </p>
