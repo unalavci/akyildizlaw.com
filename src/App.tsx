@@ -234,14 +234,14 @@ const Hero = () => {
         className="absolute inset-0 z-0"
       >
         <img 
-          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop" 
+          src="/images/scroll-bg.png" 
           alt="Akyıldız Law Firm Tradition" 
           className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
           referrerPolicy="no-referrer"
         />
         <div className="absolute right-[10%] top-[30%] w-64 h-64 opacity-25 pointer-events-none select-none mix-blend-multiply">
           <img 
-            src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
+            src="/images/wax-seal.png" 
             alt="Wax Seal Background" 
             className="w-full h-full object-contain -rotate-12"
             referrerPolicy="no-referrer"
@@ -250,8 +250,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/0 to-transparent" />
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-8">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8 py-12">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -265,10 +265,25 @@ const Hero = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6"
           >
-            <p className="text-2xl md:text-3xl text-navy/80 font-serif italic max-w-2xl mb-10 leading-relaxed">
-              "{t('hero.slogan')}"
-            </p>
+            <h1 className="text-3xl md:text-4xl text-navy font-serif italic leading-tight text-balance">
+              {t('hero.fullQuote.title')}
+            </h1>
+            
+            <div className="space-y-4 text-navy/70 font-serif leading-relaxed text-sm md:text-base max-w-xl">
+              <p>{t('hero.fullQuote.p1')}</p>
+              <p>{t('hero.fullQuote.p2')}</p>
+            </div>
+
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="text-gold font-bold uppercase tracking-[0.2em] text-xs pt-4"
+            >
+              {t('hero.fullQuote.footer')}
+            </motion.p>
           </motion.div>
         </div>
 
@@ -276,11 +291,11 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="hidden md:block relative"
+          className="hidden lg:block relative"
         >
           <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative group">
             <img 
-              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop" 
+              src="/images/scroll-bg.png" 
               alt="Akyıldız Law Tradition" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
@@ -293,7 +308,7 @@ const Hero = () => {
               className="absolute bottom-10 right-10 w-32 h-32 drop-shadow-2xl z-20"
             >
               <img 
-                src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
+                src="/images/wax-seal.png" 
                 alt="Official Seal" 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
@@ -302,56 +317,6 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
         </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const QuoteSection = () => {
-  const { t } = useTranslation();
-  
-  return (
-    <section className="py-24 bg-paper border-y border-navy/5 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <h2 className="text-3xl md:text-4xl font-serif italic text-navy leading-tight">
-            {t('hero.fullQuote.title')}
-          </h2>
-          
-          <div className="w-12 h-0.5 bg-gold mx-auto" />
-          
-          <div className="space-y-6 text-lg text-navy/80 font-serif leading-relaxed text-justify md:text-center">
-            <p>
-              {t('hero.fullQuote.p1')}
-            </p>
-            <p>
-              {t('hero.fullQuote.p2')}
-            </p>
-          </div>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-gold font-bold uppercase tracking-[0.2em] text-sm pt-4"
-          >
-            {t('hero.fullQuote.footer')}
-          </motion.p>
-        </motion.div>
-      </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-32 h-32 opacity-5 pointer-events-none">
-        <Scale className="w-full h-full" />
-      </div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 opacity-5 pointer-events-none rotate-180">
-        <Scale className="w-full h-full" />
       </div>
     </section>
   );
@@ -385,7 +350,7 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transition-all duration-500 border-4 border-white"
             >
               <img 
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" 
+                src="/images/lawyer-portrait.png" 
                 alt="Av. Mehmet Uğur Akyıldız" 
                 className="w-full h-full object-cover object-top"
                 referrerPolicy="no-referrer"
@@ -397,7 +362,7 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 border-4 border-white"
             >
               <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
+                src="/images/office-desk.png" 
                 alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -432,7 +397,7 @@ const PracticeAreas = () => {
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
         <img 
-          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop" 
+          src="/images/scroll-bg.png" 
           alt="Practice Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -500,7 +465,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-navy text-white overflow-hidden relative scroll-mt-20">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <img 
-          src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
+          src="/images/stone-columns.png" 
           alt="Contact Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -668,7 +633,6 @@ export default function App() {
       <PageLoader />
       <Navbar />
       <Hero />
-      <QuoteSection />
       <About />
       <PracticeAreas />
       <Contact />
