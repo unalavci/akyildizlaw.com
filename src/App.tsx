@@ -227,86 +227,50 @@ const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="home" className="relative h-screen flex items-stretch overflow-hidden">
-      {/* Left Pane - Content */}
-      <div className="flex-[1.5] bg-paper flex flex-col justify-center px-12 md:px-24 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="max-w-3xl space-y-12"
-        >
-          <div className="space-y-4">
-            <span className="text-gold font-bold uppercase tracking-[0.4em] text-sm block">
-              Akyıldız Hukuk & Danışmanlık
-            </span>
-            <div className="w-20 h-px bg-gold/50" />
-          </div>
-          
-          <h1 className="text-5xl md:text-8xl text-navy font-serif italic leading-[1.1] tracking-tight">
-            "{t('hero.slogan')}"
-          </h1>
-          
-          <div className="flex items-center gap-8 pt-8">
-            <div className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-            </div>
-            <span className="text-navy/60 font-serif italic text-lg">
-              Est. 2004 — İstanbul
-            </span>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Right Pane - Visual Prestige */}
-      <div className="flex-1 bg-navy relative overflow-hidden hidden md:flex items-center justify-center">
-        {/* Massive, Cropped Seal Texture */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.2, rotate: -15 }}
-          animate={{ opacity: 0.15, scale: 1, rotate: 0 }}
-          transition={{ duration: 2 }}
-          className="absolute -right-1/4 w-[1200px] h-[1200px] pointer-events-none select-none"
-        >
-          <img 
-            src="/images/wax-seal.png" 
-            alt="" 
-            className="w-full h-full object-contain invert grayscale brightness-200"
-            referrerPolicy="no-referrer"
-          />
-        </motion.div>
-
-        {/* Central High-Contrast Seal */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="relative z-10 w-80 h-80"
-        >
-          <img 
-            src="/images/wax-seal.png" 
-            alt="Akyıldız Official Seal" 
-            className="w-full h-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
-            referrerPolicy="no-referrer"
-          />
-        </motion.div>
-
-        {/* Vertical Rail Text */}
-        <div className="absolute right-8 bottom-24 origin-right rotate-90 flex items-center gap-4">
-          <span className="text-[10px] text-gold/40 uppercase tracking-[0.5em] font-sans whitespace-nowrap">
-            Professional Legal Excellence
-          </span>
-          <div className="w-12 h-px bg-gold/20" />
-        </div>
-      </div>
-
-      {/* Mobile Background Seal */}
-      <div className="absolute inset-0 z-0 md:hidden opacity-10 pointer-events-none">
+    <section id="home" className="relative h-screen flex items-center justify-center bg-paper overflow-hidden">
+      {/* Integrated Background - Watermark Style */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none"
+      >
         <img 
           src="/images/wax-seal.png" 
           alt="" 
-          className="w-full h-full object-contain scale-150"
+          className="w-[1200px] h-[1200px] object-contain"
           referrerPolicy="no-referrer"
         />
+      </motion.div>
+
+      {/* Subtle Texture Overlay */}
+      <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none">
+        <img 
+          src="/images/scroll-bg.png" 
+          alt="" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          className="space-y-12"
+        >
+          <div className="flex flex-col items-center gap-6">
+            <span className="text-gold font-bold uppercase tracking-[0.5em] text-sm md:text-base">
+              Akyıldız Hukuk & Danışmanlık
+            </span>
+            <div className="w-24 h-px bg-gold/40" />
+          </div>
+          
+          <h1 className="text-5xl md:text-8xl text-navy font-serif italic leading-[1.1] tracking-tight max-w-5xl mx-auto">
+            "{t('hero.slogan')}"
+          </h1>
+        </motion.div>
       </div>
     </section>
   );
@@ -320,11 +284,11 @@ const Manifesto = () => {
     <section className="py-48 bg-navy relative overflow-hidden">
       {/* Subtle Atmospheric Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(197,160,89,0.05)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(197,160,89,0.08)_0%,_transparent_70%)]" />
         <img 
-          src="/images/scroll-bg.png" 
+          src="/images/wax-seal.png" 
           alt="" 
-          className="w-full h-full object-cover opacity-[0.03] grayscale"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] object-contain opacity-[0.03] grayscale invert"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -342,18 +306,12 @@ const Manifesto = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-[1fr_auto_1fr] gap-12 items-center">
-          <div className="h-px bg-gold/20 w-full" />
-          <div className="w-3 h-3 rounded-full border border-gold/40" />
-          <div className="h-px bg-gold/20 w-full" />
-        </div>
-
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-24 space-y-16 text-2xl md:text-4xl text-paper/80 leading-relaxed font-serif text-center max-w-5xl mx-auto"
+          className="space-y-16 text-2xl md:text-4xl text-paper/80 leading-relaxed font-serif text-center max-w-5xl mx-auto"
         >
           {content.map((paragraph, index) => (
             <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold mt-20" : ""}>
@@ -363,19 +321,16 @@ const Manifesto = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
           className="mt-24 flex flex-col items-center"
         >
-          <div className="w-px h-24 bg-gold/30 mb-8" />
+          <div className="w-24 h-px bg-gold/30 mb-8" />
           <p className="text-3xl font-serif text-paper tracking-[0.2em] uppercase">
             {t('manifesto.author')}
           </p>
-          <span className="text-gold/60 text-sm uppercase tracking-[0.4em] mt-4">
-            Avukat & Arabulucu
-          </span>
         </motion.div>
       </div>
     </section>
