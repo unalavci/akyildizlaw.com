@@ -239,14 +239,6 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute right-[10%] top-[30%] w-64 h-64 opacity-25 pointer-events-none select-none mix-blend-multiply">
-          <img 
-            src="/images/wax-seal.png" 
-            alt="Wax Seal Background" 
-            className="w-full h-full object-contain -rotate-12"
-            referrerPolicy="no-referrer"
-          />
-        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/0 to-transparent" />
       </motion.div>
 
@@ -300,20 +292,6 @@ const Hero = () => {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
-            {/* Main Wax Seal Overlay */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
-              transition={{ delay: 1, duration: 0.8, type: "spring" }}
-              className="absolute bottom-10 right-10 w-32 h-32 drop-shadow-2xl z-20"
-            >
-              <img 
-                src="/images/wax-seal.png" 
-                alt="Official Seal" 
-                className="w-full h-full object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </motion.div>
             <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
         </motion.div>
@@ -347,9 +325,10 @@ const About = () => {
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div 
-              initial={{ rotate: -2 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transition-all duration-500 border-4 border-white"
+              className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-navy/5 transition-all duration-500"
             >
               <img 
                 src="/images/lawyer-portrait.png" 
@@ -359,9 +338,10 @@ const About = () => {
               />
             </motion.div>
             <motion.div 
-              initial={{ rotate: 2 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 border-4 border-white"
+              className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500"
             >
               <img 
                 src="/images/office-desk.png" 
