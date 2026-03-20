@@ -291,7 +291,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
               whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
               transition={{ delay: 1, duration: 0.8, type: "spring" }}
-              className="absolute bottom-10 right-10 w-32 h-32 drop-shadow-2xl z-20"
+              className="absolute bottom-4 right-4 w-24 h-24 drop-shadow-xl z-20"
             >
               <img 
                 src="/images/wax-seal.png" 
@@ -330,8 +330,8 @@ const Manifesto = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Quote className="w-12 h-12 text-gold/40 mx-auto mb-8" />
-          <h2 className="text-3xl md:text-4xl font-serif text-navy italic leading-relaxed">
+          <Quote className="w-16 h-16 text-gold/40 mx-auto mb-8" />
+          <h2 className="text-4xl md:text-5xl font-serif text-navy italic leading-tight">
             "{t('manifesto.quote')}"
           </h2>
         </motion.div>
@@ -341,10 +341,10 @@ const Manifesto = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="space-y-8 text-lg text-navy/80 leading-relaxed font-serif"
+          className="space-y-10 text-xl md:text-2xl text-navy/90 leading-relaxed font-serif text-center"
         >
           {content.map((paragraph, index) => (
-            <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold" : ""}>
+            <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold mt-12" : ""}>
               {paragraph}
             </p>
           ))}
