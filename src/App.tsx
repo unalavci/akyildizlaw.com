@@ -280,30 +280,28 @@ const Hero = () => {
           className="hidden md:block relative"
         >
           <div className="relative group">
-            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative z-10">
-              <img 
-                src="/images/scroll-bg.png" 
-                alt="Akyıldız Law Tradition" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative z-10 flex items-center justify-center p-12">
+              {/* Subtle Background Texture/Gradient */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(184,134,11,0.05)_0%,_transparent_70%)]" />
+              
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="relative w-full h-full flex items-center justify-center"
+              >
+                <img 
+                  src="/images/wax-seal.png" 
+                  alt="Akyıldız Official Seal" 
+                  className="w-full h-full object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.2)] group-hover:scale-105 transition-transform duration-700"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+              
+              {/* Decorative Corner Accents */}
+              <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-gold/20" />
+              <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-gold/20" />
             </div>
-            
-            {/* Elegant Floating Wax Seal */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
-              transition={{ delay: 1, duration: 1, type: "spring", stiffness: 100 }}
-              className="absolute -bottom-12 -right-12 w-48 h-48 drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 pointer-events-none"
-            >
-              <img 
-                src="/images/wax-seal.png" 
-                alt="Official Seal" 
-                className="w-full h-full object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </motion.div>
           </div>
         </motion.div>
       </div>
