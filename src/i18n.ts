@@ -12,6 +12,7 @@ const resources = {
         contact: 'İletişim'
       },
       hero: {
+        subtitle: 'Akyıldız Hukuk & Danışmanlık',
         slogan: 'Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır.',
         cta: 'Randevu Al',
         fullQuote: {
@@ -85,6 +86,7 @@ const resources = {
         contact: 'Contact'
       },
       hero: {
+        subtitle: 'Akyıldız Law & Consultancy',
         slogan: 'Justice is the horizon of all other virtues and the law of their coexistence.',
         cta: 'Book an Appointment',
         fullQuote: {

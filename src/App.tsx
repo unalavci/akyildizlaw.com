@@ -266,9 +266,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="inline-block text-gold font-bold uppercase tracking-[0.3em] text-sm"
+            className="inline-block text-gold font-bold uppercase tracking-[0.3em] text-sm font-sans"
           >
-            Akyıldız Hukuk & Danışmanlık
+            {t('hero.subtitle')}
           </motion.span>
           
           <motion.div
@@ -291,7 +291,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1 }}
-                className="text-gold font-bold uppercase tracking-[0.2em] text-xs italic"
+                className="text-gold font-bold uppercase tracking-[0.2em] text-xs italic font-sans"
               >
                 {t('hero.fullQuote.footer')}
               </motion.p>
@@ -299,7 +299,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="text-navy font-bold uppercase tracking-[0.3em] text-sm"
+                className="text-navy font-bold uppercase tracking-[0.3em] text-sm font-sans"
               >
                 {t('hero.fullQuote.author')}
               </motion.p>
@@ -628,7 +628,7 @@ const Footer = () => {
             </button>
           </div>
           
-          <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40 text-center">
+          <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40 text-center font-sans">
             © {new Date().getFullYear()} AKYILDIZ LAW FIRM. {t('footer.rights')}
           </div>
         </div>
