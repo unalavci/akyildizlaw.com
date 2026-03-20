@@ -25,7 +25,8 @@ import {
   Landmark,
   Lock,
   Umbrella,
-  Stethoscope
+  Stethoscope,
+  Quote
 } from 'lucide-react';
 
 const PageLoader = () => {
@@ -239,7 +240,7 @@ const Hero = () => {
           className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute right-[12%] top-[35%] w-48 h-48 opacity-20 pointer-events-none select-none mix-blend-multiply">
+        <div className="absolute right-[10%] top-[30%] w-64 h-64 opacity-25 pointer-events-none select-none mix-blend-multiply">
           <img 
             src="/images/wax-seal.png" 
             alt="Wax Seal Background" 
@@ -278,14 +279,88 @@ const Hero = () => {
           transition={{ duration: 1.2 }}
           className="hidden md:block relative"
         >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper">
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative group">
             <img 
               src="/images/scroll-bg.png" 
               alt="Akyıldız Law Tradition" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
+            {/* Main Wax Seal Overlay */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
+              transition={{ delay: 1, duration: 0.8, type: "spring" }}
+              className="absolute bottom-10 right-10 w-32 h-32 drop-shadow-2xl z-20"
+            >
+              <img 
+                src="/images/wax-seal.png" 
+                alt="Official Seal" 
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const Manifesto = () => {
+  const { t } = useTranslation();
+  const content = t('manifesto.content', { returnObjects: true }) as string[];
+
+  return (
+    <section className="py-24 bg-paper relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <img 
+          src="/images/wax-seal.png" 
+          alt="" 
+          className="w-full h-full object-contain scale-150 rotate-12"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      
+      <div className="max-w-4xl mx-auto px-6 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <Quote className="w-12 h-12 text-gold/40 mx-auto mb-8" />
+          <h2 className="text-3xl md:text-4xl font-serif text-navy italic leading-relaxed">
+            "{t('manifesto.quote')}"
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="space-y-8 text-lg text-navy/80 leading-relaxed font-serif"
+        >
+          {content.map((paragraph, index) => (
+            <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold" : ""}>
+              {paragraph}
+            </p>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-12 text-right"
+        >
+          <div className="w-24 h-px bg-gold ml-auto mb-4" />
+          <p className="text-xl font-serif text-navy tracking-widest uppercase">
+            {t('manifesto.author')}
+          </p>
         </motion.div>
       </div>
     </section>
@@ -294,6 +369,7 @@ const Hero = () => {
 
 const About = () => {
   const { t } = useTranslation();
+  const content = t('about.content', { returnObjects: true }) as string[];
   
   return (
     <section id="about" className="py-24 bg-white scroll-mt-20">
@@ -308,9 +384,11 @@ const About = () => {
               {t('about.title')}
             </h2>
             <div className="w-20 h-1 bg-gold mb-8" />
-            <p className="text-lg text-navy/70 leading-relaxed mb-12">
-              {t('about.content')}
-            </p>
+            <div className="space-y-6 text-lg text-navy/70 leading-relaxed mb-12">
+              {content.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
           </motion.div>
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -603,6 +681,7 @@ export default function App() {
       <PageLoader />
       <Navbar />
       <Hero />
+      <Manifesto />
       <About />
       <PracticeAreas />
       <Contact />
