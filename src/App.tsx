@@ -225,34 +225,30 @@ const Navbar = () => {
 
 const Hero = () => {
   const { t } = useTranslation();
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 100]);
-  
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden scroll-mt-20">
+    <section id="home" className="relative min-h-screen flex items-center pt-20 bg-paper overflow-hidden scroll-mt-20">
+      {/* Background Elements */}
       <motion.div 
-        style={{ y }}
-        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 z-0 overflow-hidden"
       >
-        <img 
-          src="/images/scroll-bg.png" 
-          alt="Akyıldız Law Firm Tradition" 
-          className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute right-[10%] top-[30%] w-64 h-64 opacity-25 pointer-events-none select-none mix-blend-multiply">
+        {/* Large Background Seal */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] opacity-[0.15] pointer-events-none select-none">
           <img 
             src="/images/wax-seal.png" 
-            alt="Wax Seal Background" 
-            className="w-full h-full object-contain -rotate-12"
+            alt="" 
+            className="w-full h-full object-contain rotate-12"
             referrerPolicy="no-referrer"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/0 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/50 to-transparent" />
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-8">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between w-full">
+        <div className="space-y-8 max-w-2xl">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -264,38 +260,29 @@ const Hero = () => {
           
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-2xl md:text-3xl text-navy/80 font-serif italic max-w-2xl mb-10 leading-relaxed">
+            <p className="text-3xl md:text-5xl text-navy font-serif italic leading-tight">
               "{t('hero.slogan')}"
             </p>
           </motion.div>
         </div>
 
-        <div
-          className="hidden md:block relative"
+        {/* Elegant Seal Amblem (No Frame) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.8 }}
+          className="hidden md:block relative w-[450px] h-[450px]"
         >
-          <div className="relative">
-            <div className="w-80 h-80 mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-paper relative z-10 flex items-center justify-center p-6">
-              {/* Subtle Background Texture/Gradient */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(184,134,11,0.03)_0%,_transparent_70%)]" />
-              
-              <div className="relative w-full h-full flex items-center justify-center">
-                <img 
-                  src="/images/wax-seal.png" 
-                  alt="Akyıldız Official Seal" 
-                  className="w-full h-full object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              
-              {/* Decorative Corner Accents */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-t border-l border-gold/20" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-gold/20" />
-            </div>
-          </div>
-        </div>
+          <img 
+            src="/images/wax-seal.png" 
+            alt="Akyıldız Official Seal" 
+            className="w-full h-full object-contain drop-shadow-[0_15px_45px_rgba(184,0,0,0.25)]"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
       </div>
     </section>
   );
@@ -306,46 +293,58 @@ const Manifesto = () => {
   const content = t('manifesto.content', { returnObjects: true }) as string[];
 
   return (
-    <section className="py-24 bg-paper relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <Quote className="w-16 h-16 text-gold/40 mx-auto mb-8" />
-          <h2 className="text-4xl md:text-5xl font-serif text-navy italic leading-tight">
-            "{t('manifesto.quote')}"
-          </h2>
-        </motion.div>
+    <section className="py-32 bg-paper relative overflow-hidden">
+      {/* Scroll Background */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-10">
+        <img 
+          src="/images/scroll-bg.png" 
+          alt="" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="bg-white/40 backdrop-blur-sm p-12 md:p-20 rounded-3xl shadow-xl border border-white/20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <Quote className="w-16 h-16 text-gold/40 mx-auto mb-8" />
+            <h2 className="text-4xl md:text-5xl font-serif text-navy italic leading-tight">
+              "{t('manifesto.quote')}"
+            </h2>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="space-y-10 text-xl md:text-2xl text-navy/90 leading-relaxed font-serif text-center"
-        >
-          {content.map((paragraph, index) => (
-            <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold mt-12" : ""}>
-              {paragraph}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="space-y-10 text-xl md:text-2xl text-navy/90 leading-relaxed font-serif text-center"
+          >
+            {content.map((paragraph, index) => (
+              <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold mt-12" : ""}>
+                {paragraph}
+              </p>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-12 text-right"
+          >
+            <div className="w-24 h-px bg-gold ml-auto mb-4" />
+            <p className="text-xl font-serif text-navy tracking-widest uppercase">
+              {t('manifesto.author')}
             </p>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-12 text-right"
-        >
-          <div className="w-24 h-px bg-gold ml-auto mb-4" />
-          <p className="text-xl font-serif text-navy tracking-widest uppercase">
-            {t('manifesto.author')}
-          </p>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
