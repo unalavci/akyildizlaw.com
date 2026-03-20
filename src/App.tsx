@@ -267,11 +267,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h1 className="text-3xl md:text-4xl text-navy font-serif italic leading-tight text-balance">
+            <h1 className="text-3xl md:text-5xl text-navy font-serif italic leading-tight text-balance">
               {t('hero.fullQuote.title')}
             </h1>
             
-            <div className="space-y-4 text-navy/70 font-serif leading-relaxed text-sm md:text-base max-w-xl">
+            <div className="space-y-6 text-navy/80 font-serif leading-relaxed text-base md:text-lg text-justify max-w-2xl">
               <p>{t('hero.fullQuote.p1')}</p>
               <p>{t('hero.fullQuote.p2')}</p>
             </div>
@@ -280,7 +280,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="text-gold font-bold uppercase tracking-[0.2em] text-xs pt-4"
+              className="text-gold font-bold uppercase tracking-[0.2em] text-sm pt-4"
             >
               {t('hero.fullQuote.footer')}
             </motion.p>
@@ -338,9 +338,11 @@ const About = () => {
               {t('about.title')}
             </h2>
             <div className="w-20 h-1 bg-gold mb-8" />
-            <p className="text-lg text-navy/70 leading-relaxed mb-12">
-              {t('about.content')}
-            </p>
+            <div className="space-y-6 text-lg text-navy/70 leading-relaxed mb-12 text-justify">
+              <p>{t('about.p1')}</p>
+              <p>{t('about.p2')}</p>
+              <p>{t('about.p3')}</p>
+            </div>
           </motion.div>
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
