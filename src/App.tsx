@@ -503,30 +503,15 @@ const Contact = () => {
     setIsSubmitting(true);
     setError(null);
     
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Mesaj gönderilemedi.');
-      }
-
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Reset after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
-    } catch (err) {
-      console.error('Submit error:', err);
-      setError('Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Simulate a brief delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    setIsSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
+    
+    // Reset after 5 seconds
+    setTimeout(() => setIsSubmitted(false), 5000);
+    setIsSubmitting(false);
   };
   
   return (
