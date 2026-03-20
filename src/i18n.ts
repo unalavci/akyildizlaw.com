@@ -13,25 +13,17 @@ const resources = {
       },
       hero: {
         slogan: 'Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır.',
-        cta: 'Randevu Al'
+        cta: 'Randevu Al',
+        fullQuote: {
+          title: '“Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır”',
+          p1: 'Adalet diye bir gerçeklik kendiliğinden yoktur. Adalet tam da hiç olmadığı için yaratılması gerekenlerdendir ve ancak yaratılırsa var olacaktır. Adalet; toplumsal yararlılık işlevinden ibaret olmadığı gibi salt bir eşitliğe ve yasaya saygıya da indirgenemez. Eğilmemiz gereken yönü, adaletin erdemsel niteliği ve onun diğer yetkinliklerle ilişkisidir. Hangi erdemi ele alırsak alalım, adalet içgörüsü olmadan onu yoğuramayız. Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır. Bu nedenle öncelikle herkesin kendi içinde taşıdığı adaletsiz yönelimlere direnmesi gerekir.',
+          p2: 'Adalet arayışının bitimsiz olduğu bilinmez değil. Ne var ki düş görmeyi güçleştiren durum ve koşullar, mücadele etmeyi engelleyemez.',
+          footer: 'Adalet uğrunda yılgınlık göstermeyenlere...'
+        }
       },
       about: {
         title: 'Hakkımızda',
-        content: [
-          'Av. Mehmet Uğur Akyıldız 2000 yılında İstanbul’da avukatlığa başlamış, 2004 senesinde Hollanda Rotterdam’da ticaret hukuku üzerine yüksek lisansını (LL.M) tamamlamıştır.',
-          'Akyıldız Hukuk Bürosu 2008 yılında Av. Mehmet Uğur Akyıldız tarafından kurulmuştur. Büro, nitelikten ödün vermeyen, emeği yücelten, avukatlık geleneğinin felsefi içeriğinin özümlenmesiyle sürdürülmesi gerektiğini savunan, çözüm arayışlarında ısrarcı yaklaşımıyla ve aynı doğrultuyu benimseyen çalışma grubuyla birlikte faaliyet göstermektedir.',
-          'Av. Mehmet Uğur Akyıldız, Avrupa, Körfez ve Ortadoğu ülkelerinin farklı ölçekli şirketlerine avukatlık hizmeti vermenin yanısıra, birçok uluslararası siyasi kişiyi Türkiye’de temsil etmekte ve danışmanlığını yürütmektedir.'
-        ]
-      },
-      manifesto: {
-        title: 'Adalet Arayışı',
-        quote: 'Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır',
-        content: [
-          'Adalet diye bir gerçeklik kendiliğinden yoktur. Adalet tam da hiç olmadığı için yaratılması gerekenlerdendir ve ancak yaratılırsa var olacaktır. Adalet; toplumsal yararlılık işlevinden ibaret olmadığı gibi salt bir eşitliğe ve yasaya saygıya da indirgenemez. Eğilmemiz gereken yönü, adaletin erdemsel niteliği ve onun diğer yetkinliklerle ilişkisidir. Hangi erdemi ele alırsak alalım, adalet içgörüsü olmadan onu yoğuramayız. Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır. Bu nedenle öncelikle herkesin kendi içinde taşıdığı adaletsiz yönelimlere direnmesi gerekir.',
-          'Adalet arayışının bitimsiz olduğu bilinmez değil. Ne var ki düş görmeyi güçleştiren durum ve koşullar, mücadele etmeyi engelleyemez.',
-          'Adalet uğrunda yılgınlık göstermeyenlere...'
-        ],
-        author: 'M. Uğur Akyıldız'
+        content: 'Av. Mehmet Uğur Akyıldız 2000 yılında İstanbul’da avukatlığa başlamış, 2004 senesinde Hollanda Rotterdam’da ticaret hukuku üzerine yüksek lisansını (LL.M) tamamlamıştır. Akyıldız Hukuk Bürosu 2008 yılında Av. Mehmet Uğur Akyıldız tarafından kurulmuştur. Büro, nitelikten ödün vermeyen, emeği yücelten, avukatlık geleneğinin felsefi içeriğinin özümlenmesiyle sürdürülmesi gerektiğini savunan, çözüm arayışlarında ısrarcı yaklaşımıyla ve aynı doğrultuyu benimseyen çalışma grubuyla birlikte faaliyet göstermektedir. Av. Mehmet Uğur Akyıldız, Avrupa, Körfez ve Ortadoğu ülkelerinin farklı ölçekli şirketlerine avukatlık hizmeti vermenin yanısıra, birçok uluslararası siyasi kişiyi Türkiye’de temsil etmekte ve danışmanlığını yürütmektedir.'
       },
       practice: {
         title: 'Faaliyet Alanlarımız',
@@ -91,25 +83,17 @@ const resources = {
       },
       hero: {
         slogan: 'Justice is the horizon of all other virtues and the law of their coexistence.',
-        cta: 'Book an Appointment'
+        cta: 'Book an Appointment',
+        fullQuote: {
+          title: '“Justice is the horizon of all other virtues and the law of their coexistence”',
+          p1: 'Justice does not exist as a reality on its own. Justice is precisely one of those things that must be created because it does not exist at all, and it will only exist if it is created. Justice is not merely a function of social utility, nor can it be reduced to a simple equality and respect for the law. The direction we must lean towards is the virtuous nature of justice and its relationship with other competencies. No matter which virtue we consider, we cannot mold it without the insight of justice. Justice is the horizon of all other virtues and the law of their coexistence. Therefore, first of all, everyone must resist the unjust tendencies they carry within themselves.',
+          p2: 'It is not unknown that the search for justice is endless. However, situations and conditions that make dreaming difficult cannot prevent the struggle.',
+          footer: 'To those who do not show weariness for the sake of justice...'
+        }
       },
       about: {
         title: 'About Us',
-        content: [
-          'Attorney Mehmet Uğur Akyıldız started working as a lawyer in Istanbul in 2000 and completed his Master’s degree (LL.M) in Commercial Law in Rotterdam, the Netherlands, in 2004.',
-          'Founded in 2008 by Attorney Mehmet Uğur Akyıldız, Akyıldız Law Firm operates with a working group that does not compromise on quality and promotes dignified labor. The firm insists on creating solutions and is committed to continuing legal culture and tradition by upholding its core philosophical notions.',
-          'While providing legal services to companies of various sizes from Europe, Middle East, and the Gulf States, Attorney Mehmet Uğur Akyıldız advises many international political figures and represents them in Turkey.'
-        ]
-      },
-      manifesto: {
-        title: 'The Pursuit of Justice',
-        quote: 'Justice is the horizon of all other virtues and the law of their coexistence',
-        content: [
-          'Justice as a reality does not exist on its own. Justice is precisely one of those things that must be created because it does not exist, and it will only exist if it is created. Justice is not merely a function of social utility, nor can it be reduced to mere equality and respect for the law. The direction we must lean towards is the virtuous quality of justice and its relationship with other competencies. No matter which virtue we consider, we cannot mold it without the insight of justice. Justice is the horizon of all other virtues and the law of their coexistence. Therefore, first of all, everyone must resist the unjust tendencies they carry within themselves.',
-          'It is not unknown that the search for justice is endless. However, situations and conditions that make dreaming difficult cannot prevent struggling.',
-          'To those who do not show weariness for the sake of justice...'
-        ],
-        author: 'M. Uğur Akyıldız'
+        content: 'Attorney Mehmet Uğur Akyıldız started working as a lawyer in Istanbul in 2000 and completed his Master’s degree (LL.M) in Commercial Law in Rotterdam, the Netherlands, in 2004. Founded in 2008 by Attorney Mehmet Uğur Akyıldız, Akyıldız Law Firm operates with a working group that does not compromise on quality and promotes dignified labor. The firm insists on creating solutions and is committed to continuing legal culture and tradition by upholding its core philosophical notions. While providing legal services to companies of various sizes from Europe, Middle East, and the Gulf States, Attorney Mehmet Uğur Akyıldız advises many international political figures and represents them in Turkey.'
       },
       practice: {
         title: 'Practice Areas',

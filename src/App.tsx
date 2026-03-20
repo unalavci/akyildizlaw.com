@@ -25,8 +25,7 @@ import {
   Landmark,
   Lock,
   Umbrella,
-  Stethoscope,
-  Quote
+  Stethoscope
 } from 'lucide-react';
 
 const PageLoader = () => {
@@ -225,113 +224,134 @@ const Navbar = () => {
 
 const Hero = () => {
   const { t } = useTranslation();
-
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 100]);
+  
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center bg-paper overflow-hidden">
-      {/* Integrated Background - Watermark Style */}
+    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden scroll-mt-20">
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.12 }}
-        transition={{ duration: 2 }}
-        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none"
+        style={{ y }}
+        className="absolute inset-0 z-0"
       >
         <img 
-          src="/images/wax-seal.png" 
-          alt="" 
-          className="w-[1200px] h-[1200px] object-contain"
+          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop" 
+          alt="Akyıldız Law Firm Tradition" 
+          className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
           referrerPolicy="no-referrer"
         />
+        <div className="absolute right-[10%] top-[30%] w-64 h-64 opacity-25 pointer-events-none select-none mix-blend-multiply">
+          <img 
+            src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
+            alt="Wax Seal Background" 
+            className="w-full h-full object-contain -rotate-12"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/0 to-transparent" />
       </motion.div>
 
-      {/* Subtle Texture Overlay */}
-      <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none">
-        <img 
-          src="/images/scroll-bg.png" 
-          alt="" 
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="space-y-12"
-        >
-          <div className="flex flex-col items-center gap-6">
-            <span className="text-gold font-bold uppercase tracking-[0.5em] text-sm md:text-base">
-              Akyıldız Hukuk & Danışmanlık
-            </span>
-            <div className="w-24 h-px bg-gold/40" />
-          </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="inline-block text-gold font-bold uppercase tracking-[0.3em] text-sm"
+          >
+            Akyıldız Hukuk & Danışmanlık
+          </motion.span>
           
-          <h1 className="text-5xl md:text-8xl text-navy font-serif italic leading-[1.1] tracking-tight max-w-5xl mx-auto">
-            "{t('hero.slogan')}"
-          </h1>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p className="text-2xl md:text-3xl text-navy/80 font-serif italic max-w-2xl mb-10 leading-relaxed">
+              "{t('hero.slogan')}"
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2 }}
+          className="hidden md:block relative"
+        >
+          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative group">
+            <img 
+              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop" 
+              alt="Akyıldız Law Tradition" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              referrerPolicy="no-referrer"
+            />
+            {/* Main Wax Seal Overlay */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
+              transition={{ delay: 1, duration: 0.8, type: "spring" }}
+              className="absolute bottom-10 right-10 w-32 h-32 drop-shadow-2xl z-20"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
+                alt="Official Seal" 
+                className="w-full h-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
         </motion.div>
       </div>
     </section>
   );
 };
 
-const Manifesto = () => {
+const QuoteSection = () => {
   const { t } = useTranslation();
-  const content = t('manifesto.content', { returnObjects: true }) as string[];
-
+  
   return (
-    <section className="py-48 bg-navy relative overflow-hidden">
-      {/* Subtle Atmospheric Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(197,160,89,0.08)_0%,_transparent_70%)]" />
-        <img 
-          src="/images/wax-seal.png" 
-          alt="" 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] object-contain opacity-[0.03] grayscale invert"
-          referrerPolicy="no-referrer"
-        />
+    <section className="py-24 bg-paper border-y border-navy/5 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          <h2 className="text-3xl md:text-4xl font-serif italic text-navy leading-tight">
+            {t('hero.fullQuote.title')}
+          </h2>
+          
+          <div className="w-12 h-0.5 bg-gold mx-auto" />
+          
+          <div className="space-y-6 text-lg text-navy/80 font-serif leading-relaxed text-justify md:text-center">
+            <p>
+              {t('hero.fullQuote.p1')}
+            </p>
+            <p>
+              {t('hero.fullQuote.p2')}
+            </p>
+          </div>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-gold font-bold uppercase tracking-[0.2em] text-sm pt-4"
+          >
+            {t('hero.fullQuote.footer')}
+          </motion.p>
+        </motion.div>
       </div>
       
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-24"
-        >
-          <Quote className="w-20 h-20 text-gold/30 mx-auto mb-12" />
-          <h2 className="text-5xl md:text-7xl font-serif text-paper italic leading-tight text-balance">
-            "{t('manifesto.quote')}"
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="space-y-16 text-2xl md:text-4xl text-paper/80 leading-relaxed font-serif text-center max-w-5xl mx-auto"
-        >
-          {content.map((paragraph, index) => (
-            <p key={index} className={index === content.length - 1 ? "font-bold italic text-gold mt-20" : ""}>
-              {paragraph}
-            </p>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-24 flex flex-col items-center"
-        >
-          <div className="w-24 h-px bg-gold/30 mb-8" />
-          <p className="text-3xl font-serif text-paper tracking-[0.2em] uppercase">
-            {t('manifesto.author')}
-          </p>
-        </motion.div>
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-32 h-32 opacity-5 pointer-events-none">
+        <Scale className="w-full h-full" />
+      </div>
+      <div className="absolute bottom-0 right-0 w-32 h-32 opacity-5 pointer-events-none rotate-180">
+        <Scale className="w-full h-full" />
       </div>
     </section>
   );
@@ -339,7 +359,6 @@ const Manifesto = () => {
 
 const About = () => {
   const { t } = useTranslation();
-  const content = t('about.content', { returnObjects: true }) as string[];
   
   return (
     <section id="about" className="py-24 bg-white scroll-mt-20">
@@ -354,11 +373,9 @@ const About = () => {
               {t('about.title')}
             </h2>
             <div className="w-20 h-1 bg-gold mb-8" />
-            <div className="space-y-6 text-lg text-navy/70 leading-relaxed mb-12">
-              {content.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <p className="text-lg text-navy/70 leading-relaxed mb-12">
+              {t('about.content')}
+            </p>
           </motion.div>
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -368,7 +385,7 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 transition-all duration-500 border-4 border-white"
             >
               <img 
-                src="/images/lawyer-portrait.png" 
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" 
                 alt="Av. Mehmet Uğur Akyıldız" 
                 className="w-full h-full object-cover object-top"
                 referrerPolicy="no-referrer"
@@ -380,7 +397,7 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 border-4 border-white"
             >
               <img 
-                src="/images/office-desk.png" 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
                 alt="Akyıldız Law Office" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -415,7 +432,7 @@ const PracticeAreas = () => {
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
         <img 
-          src="/images/scroll-bg.png" 
+          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop" 
           alt="Practice Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -483,7 +500,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-navy text-white overflow-hidden relative scroll-mt-20">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <img 
-          src="/images/stone-columns.png" 
+          src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop" 
           alt="Contact Background" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -651,7 +668,7 @@ export default function App() {
       <PageLoader />
       <Navbar />
       <Hero />
-      <Manifesto />
+      <QuoteSection />
       <About />
       <PracticeAreas />
       <Contact />
