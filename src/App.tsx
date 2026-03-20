@@ -25,7 +25,8 @@ import {
   Landmark,
   Lock,
   Umbrella,
-  Stethoscope
+  Stethoscope,
+  AlertCircle
 } from 'lucide-react';
 
 const ScrollProgressBar = () => {
@@ -453,23 +454,52 @@ const PracticeAreas = () => {
 };
 
 const Contact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [validationErrors, setValidationErrors] = useState<{ [key: string]: string }>({});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
 
+  const validate = () => {
+    const errors: { [key: string]: string } = {};
+    if (!formData.name.trim()) {
+      errors.name = i18n.language === 'tr' ? 'Lütfen adınızı giriniz.' : 'Please enter your name.';
+    }
+    if (!formData.email.trim()) {
+      errors.email = i18n.language === 'tr' ? 'Lütfen e-posta adresinizi giriniz.' : 'Please enter your email.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = i18n.language === 'tr' ? 'Geçerli bir e-posta adresi giriniz.' : 'Please enter a valid email.';
+    }
+    if (!formData.message.trim()) {
+      errors.message = i18n.language === 'tr' ? 'Lütfen mesajınızı giriniz.' : 'Please enter your message.';
+    }
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (validationErrors[name]) {
+      setValidationErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
+    if (!validate()) return;
+
     setIsSubmitting(true);
     setError(null);
     
@@ -592,39 +622,78 @@ const Contact = () => {
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.name')}</label>
                       <input 
-                        required 
                         type="text" 
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors" 
+                        className={`w-full border-b py-2 outline-none transition-colors ${validationErrors.name ? 'border-red-400' : 'border-navy/10 focus:border-gold'}`} 
                       />
+                      <AnimatePresence>
+                        {validationErrors.name && (
+                          <motion.div 
+                            initial={{ opacity: 0, y: -5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -5 }}
+                            className="flex items-center gap-1 text-red-500 text-[10px] font-bold"
+                          >
+                            <AlertCircle className="w-3 h-3" />
+                            {validationErrors.name}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.email')}</label>
                       <input 
-                        required 
                         type="email" 
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors" 
+                        className={`w-full border-b py-2 outline-none transition-colors ${validationErrors.email ? 'border-red-400' : 'border-navy/10 focus:border-gold'}`} 
                       />
+                      <AnimatePresence>
+                        {validationErrors.email && (
+                          <motion.div 
+                            initial={{ opacity: 0, y: -5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -5 }}
+                            className="flex items-center gap-1 text-red-500 text-[10px] font-bold"
+                          >
+                            <AlertCircle className="w-3 h-3" />
+                            {validationErrors.email}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.message')}</label>
                     <textarea 
-                      required 
                       rows={4} 
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full border-b border-navy/10 py-2 focus:border-gold outline-none transition-colors resize-none" 
+                      className={`w-full border-b py-2 outline-none transition-colors resize-none ${validationErrors.message ? 'border-red-400' : 'border-navy/10 focus:border-gold'}`} 
                     />
+                    <AnimatePresence>
+                      {validationErrors.message && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: -5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          className="flex items-center gap-1 text-red-500 text-[10px] font-bold"
+                        >
+                          <AlertCircle className="w-3 h-3" />
+                          {validationErrors.message}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                   {error && (
-                    <p className="text-red-500 text-xs font-bold">{error}</p>
+                    <div className="bg-red-50 border border-red-100 p-3 rounded-lg flex items-center gap-2 text-red-600 text-xs font-bold">
+                      <AlertCircle className="w-4 h-4" />
+                      {error}
+                    </div>
                   )}
                   <button 
                     disabled={isSubmitting}
