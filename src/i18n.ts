@@ -18,7 +18,8 @@ const resources = {
           title: '“Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır”',
           p1: 'Adalet diye bir gerçeklik kendiliğinden yoktur. Adalet tam da hiç olmadığı için yaratılması gerekenlerdendir ve ancak yaratılırsa var olacaktır. Adalet; toplumsal yararlılık işlevinden ibaret olmadığı gibi salt bir eşitliğe ve yasaya saygıya da indirgenemez. Eğilmemiz gereken yönü, adaletin erdemsel niteliği ve onun diğer yetkinliklerle ilişkisidir. Hangi erdemi ele alırsak alalım, adalet içgörüsü olmadan onu yoğuramayız. Adalet, diğer tüm erdemlerin ufkudur ve onların birlikte var olabilmelerinin yasasıdır. Bu nedenle öncelikle herkesin kendi içinde taşıdığı adaletsiz yönelimlere direnmesi gerekir.',
           p2: 'Adalet arayışının bitimsiz olduğu bilinmez değil. Ne var ki düş görmeyi güçleştiren durum ve koşullar, mücadele etmeyi engelleyemez.',
-          footer: 'Adalet uğrunda yılgınlık göstermeyenlere...'
+          footer: 'Adalet uğrunda yılgınlık göstermeyenlere...',
+          author: 'M. UĞUR AKYILDIZ'
         }
       },
       about: {
@@ -90,7 +91,8 @@ const resources = {
           title: '“Justice is the horizon of all other virtues and the law of their coexistence”',
           p1: 'Justice does not exist as a reality on its own. Justice is precisely one of those things that must be created because it does not exist at all, and it will only exist if it is created. Justice is not merely a function of social utility, nor can it be reduced to a simple equality and respect for the law. The direction we must lean towards is the virtuous nature of justice and its relationship with other competencies. No matter which virtue we consider, we cannot mold it without the insight of justice. Justice is the horizon of all other virtues and the law of their coexistence. Therefore, first of all, everyone must resist the unjust tendencies they carry within themselves.',
           p2: 'It is not unknown that the search for justice is endless. However, situations and conditions that make dreaming difficult cannot prevent the struggle.',
-          footer: 'To those who do not show weariness for the sake of justice...'
+          footer: 'To those who do not show weariness for the sake of justice...',
+          author: 'M. UĞUR AKYILDIZ'
         }
       },
       about: {

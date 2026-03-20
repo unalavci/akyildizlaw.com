@@ -268,14 +268,24 @@ const Hero = () => {
               <p>{t('hero.fullQuote.p2')}</p>
             </div>
 
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="text-gold font-bold uppercase tracking-[0.2em] text-sm pt-4"
-            >
-              {t('hero.fullQuote.footer')}
-            </motion.p>
+            <div className="pt-6 space-y-2">
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="text-gold font-bold uppercase tracking-[0.2em] text-xs italic"
+              >
+                {t('hero.fullQuote.footer')}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                className="text-navy font-bold uppercase tracking-[0.3em] text-sm"
+              >
+                {t('hero.fullQuote.author')}
+              </motion.p>
+            </div>
           </motion.div>
         </div>
 
@@ -283,9 +293,9 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="hidden lg:block relative"
+          className="hidden lg:flex justify-center items-center relative"
         >
-          <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-8 border-white bg-paper relative group">
+          <div className="w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-paper relative group">
             <img 
               src="/images/scroll-bg.png" 
               alt="Akyıldız Law Tradition" 
