@@ -279,7 +279,7 @@ const Navbar = () => {
                 <ChevronRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${activeSection === link.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </motion.a>
             ))}
-            <motion.div variants={itemVariants} className="pt-4 border-t border-navy/5">
+            <motion.div variants={itemVariants} className="pt-4 border-t border-navy/5 flex flex-col gap-6">
               <button 
                 onClick={() => {
                   toggleLanguage();
@@ -289,6 +289,16 @@ const Navbar = () => {
               >
                 <Globe className="w-5 h-5" />
                 {i18n.language === 'tr' ? 'Switch to English' : 'Türkçe\'ye Geç'}
+              </button>
+              <button 
+                onClick={() => {
+                  toggleDarkMode();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-3 text-sm font-bold tracking-widest text-gold hover:text-ink transition-colors"
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                {isDarkMode ? (i18n.language === 'tr' ? 'Aydınlık Mod' : 'Light Mode') : (i18n.language === 'tr' ? 'Karanlık Mod' : 'Dark Mode')}
               </button>
             </motion.div>
           </motion.div>
@@ -386,28 +396,6 @@ const Hero = () => {
   );
 };
 
-const SealBackground = () => {
-  return (
-    <div 
-      className="absolute -bottom-24 -right-24 w-[500px] h-[500px] opacity-[0.25] dark:opacity-[0.35] pointer-events-none select-none z-0"
-      style={{
-        maskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
-        WebkitMaskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
-        transform: 'scaleX(-1)'
-      }}
-    >
-      <img 
-        src="/images/seal.png" 
-        alt="Akyıldız Law Seal" 
-        className="w-full h-full object-contain brightness-100 contrast-125 saturate-150 dark:brightness-125 dark:contrast-150"
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = 'none';
-        }}
-      />
-    </div>
-  );
-};
-
 const About = () => {
   const { t } = useTranslation();
   
@@ -463,7 +451,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      <SealBackground />
     </section>
   );
 };
@@ -489,7 +476,7 @@ const PracticeAreas = () => {
 
   return (
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.08] pointer-events-none dark:opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.25] pointer-events-none dark:opacity-[0.15]">
         <img 
           src="/images/scroll-bg.png" 
           alt="Practice Background" 
