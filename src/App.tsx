@@ -107,6 +107,12 @@ const Navbar = () => {
   useEffect(() => {
     document.documentElement.lang = i18n.language;
     
+    // Update document title based on language
+    const baseTitle = i18n.language === 'tr' 
+      ? 'Akyıldız Hukuk Bürosu | İstanbul Avukat' 
+      : 'Akyildiz Law Firm | Istanbul Attorney';
+    document.title = baseTitle;
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
