@@ -353,52 +353,6 @@ const Hero = () => {
 };
 
 const SealBackground = () => {
-  const [sealUrl, setSealUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    const generateSeal = async () => {
-      try {
-        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
-        const response = await ai.models.generateContent({
-          model: 'gemini-2.5-flash-image',
-          contents: {
-            parts: [
-              {
-                text: 'A macro close-up of an AUTHENTIC, ORGANIC, CRACKED red wax seal. The edges must be IRREGULAR and BROKEN, not a perfect circle. The surface should have visible fine cracks and a matte, waxy texture. The center emblem should be a WORN, HISTORICAL crest, NOT a modern arrow or scale. Background is clean cream parchment. Dramatic side lighting to emphasize the 3D texture of the wax. 8k resolution.',
-              },
-            ],
-          },
-          config: {
-            imageConfig: {
-                aspectRatio: "1:1",
-                imageSize: "1K"
-            }
-          },
-        });
-
-        for (const part of response.candidates?.[0]?.content?.parts || []) {
-          if (part.inlineData) {
-            setSealUrl(`data:image/png;base64,${part.inlineData.data}`);
-            break;
-          }
-        }
-      } catch (error) {
-        console.error("Failed to generate seal:", error);
-      }
-    };
-
-    generateSeal();
-  }, []);
-
-  if (!sealUrl) return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.02] pointer-events-none select-none">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-navy">
-        <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1" strokeDasharray="10 5" />
-        <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" />
-      </svg>
-    </div>
-  );
-
   return (
     <div 
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-[0.12] pointer-events-none select-none mix-blend-multiply"
@@ -409,10 +363,12 @@ const SealBackground = () => {
       }}
     >
       <img 
-        src={sealUrl} 
+        src="/images/seal.png" 
         alt="Akyıldız Law Seal" 
         className="w-full h-full object-contain brightness-105 contrast-110"
-        referrerPolicy="no-referrer"
+        onError={(e) => {
+          (e.target as HTMLImageElement).style.display = 'none';
+        }}
       />
     </div>
   );
