@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'motion/react';
 import { 
   Scale, 
@@ -26,7 +27,8 @@ import {
   Lock,
   Umbrella,
   Stethoscope,
-  AlertCircle
+  AlertCircle,
+  Home as HomeIcon
 } from 'lucide-react';
 
 const ScrollProgressBar = () => {
@@ -96,6 +98,7 @@ const PageLoader = () => {
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -129,11 +132,29 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: t('nav.home'), href: '#home', id: 'home' },
-    { name: t('nav.about'), href: '#about', id: 'about' },
-    { name: t('nav.practice'), href: '#practice', id: 'practice' },
-    { name: t('nav.contact'), href: '#contact', id: 'contact' },
+    { name: t('nav.home'), href: '/#home', id: 'home' },
+    { name: t('nav.about'), href: '/#about', id: 'about' },
+    { name: t('nav.practice'), href: '/#practice', id: 'practice' },
+    { name: t('nav.contact'), href: '/#contact', id: 'contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (window.location.pathname !== '/') {
+      // If not on home page, let the default link behavior (navigation to /#id) happen
+      return;
+    }
+    
+    // If on home page, handle smooth scroll
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const id = href.replace('/#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
 
   const menuVariants = {
     closed: {
@@ -162,12 +183,12 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <Scale className="w-8 h-8 text-navy" />
           <span className="font-serif text-2xl font-bold tracking-tighter text-navy">
             AKYILDIZ<span className="text-gold">LAW</span>
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
@@ -175,6 +196,7 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className={`text-sm font-medium uppercase tracking-widest transition-all relative group ${activeSection === link.id ? 'text-gold' : 'text-navy/80 hover:text-gold'}`}
             >
               {link.name}
@@ -215,7 +237,7 @@ const Navbar = () => {
                 key={link.name} 
                 href={link.href}
                 variants={itemVariants}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-2xl font-serif transition-colors flex items-center justify-between group ${activeSection === link.id ? 'text-gold' : 'text-navy hover:text-gold'}`}
               >
                 {link.name}
@@ -745,17 +767,103 @@ const Footer = () => {
   );
 };
 
-export default function App() {
+const Home = () => {
   return (
-    <div className="selection:bg-gold selection:text-white">
-      <ScrollProgressBar />
-      <PageLoader />
-      <Navbar />
+    <>
       <Hero />
       <About />
       <PracticeAreas />
       <Contact />
-      <Footer />
-    </div>
+    </>
+  );
+};
+
+const NotFound = () => {
+  const { t } = useTranslation();
+  
+  return (
+    <motion.section 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-screen flex items-center justify-center bg-paper relative overflow-hidden px-6"
+    >
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <img 
+          src="/images/scroll-bg.png" 
+          alt="Background" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      
+      <div className="max-w-2xl w-full text-center relative z-10">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8 flex justify-center"
+        >
+          <div className="relative">
+            <Scale className="w-24 h-24 text-navy/10" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-5xl font-serif font-bold text-gold">404</span>
+            </div>
+          </div>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-4xl md:text-5xl font-serif text-navy mb-6"
+        >
+          {t('notFound.title')}
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-lg text-navy/60 mb-10 max-w-md mx-auto"
+        >
+          {t('notFound.description')}
+        </motion.p>
+        
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-3 bg-navy text-white px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-gold transition-all shadow-xl group"
+          >
+            <HomeIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            {t('notFound.goHome')}
+          </Link>
+        </motion.div>
+      </div>
+      
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 -left-20 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-navy/5 rounded-full blur-3xl" />
+    </motion.section>
+  );
+};
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="selection:bg-gold selection:text-white">
+        <ScrollProgressBar />
+        <PageLoader />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

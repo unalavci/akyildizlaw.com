@@ -76,6 +76,11 @@ const resources = {
         rights: 'Tüm hakları saklıdır.',
         privacy: 'Gizlilik Politikası',
         follow: 'Bizi Takip Edin'
+      },
+      notFound: {
+        title: 'Sayfa Bulunamadı',
+        description: 'Aradığınız sayfa mevcut değil veya taşınmış olabilir.',
+        goHome: 'Ana Sayfaya Dön'
       }
     }
   },
@@ -152,6 +157,11 @@ const resources = {
         rights: 'All rights reserved.',
         privacy: 'Privacy Policy',
         follow: 'Follow Us'
+      },
+      notFound: {
+        title: 'Page Not Found',
+        description: 'The page you are looking for does not exist or has been moved.',
+        goHome: 'Return to Home'
       }
     }
   }
