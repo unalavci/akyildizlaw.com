@@ -162,12 +162,12 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <Scale className="w-8 h-8 text-navy" />
           <span className="font-serif text-2xl font-bold tracking-tighter text-navy">
             AKYILDIZ<span className="text-gold">LAW</span>
           </span>
-        </a>
+        </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
@@ -223,18 +223,16 @@ const Navbar = () => {
               </motion.a>
             ))}
             <motion.div variants={itemVariants} className="pt-4 border-t border-navy/5">
-              {i18n.isInitialized && (
-                <button 
-                  onClick={() => {
-                    toggleLanguage();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-gold hover:text-navy transition-colors"
-                >
-                  <Globe className="w-5 h-5" />
-                  {i18n.language === 'tr' ? 'Switch to English' : 'Türkçe\'ye Geç'}
-                </button>
-              )}
+              <button 
+                onClick={() => {
+                  toggleLanguage();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-3 text-sm font-bold tracking-widest text-gold hover:text-navy transition-colors"
+              >
+                <Globe className="w-5 h-5" />
+                {i18n.language === 'tr' ? 'Switch to English' : 'Türkçe\'ye Geç'}
+              </button>
             </motion.div>
           </motion.div>
         )}
@@ -390,6 +388,7 @@ const About = () => {
 
 const PracticeAreas = () => {
   const { t } = useTranslation();
+  const [activeArea, setActiveArea] = useState<number | null>(null);
   
   const areas = [
     { icon: Briefcase, title: t('practice.corporate'), desc: t('practice.corporate_desc') },
@@ -430,15 +429,16 @@ const PracticeAreas = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-navy/5 group relative overflow-hidden h-80 flex flex-col justify-center items-center text-center"
+              onClick={() => setActiveArea(activeArea === idx ? null : idx)}
+              className={`bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-navy/5 group relative overflow-hidden h-64 flex flex-col justify-center items-center text-center cursor-pointer ${activeArea === idx ? 'shadow-xl ring-2 ring-gold/20' : ''}`}
             >
-              <div className="w-16 h-16 bg-paper rounded-2xl flex items-center justify-center mb-6 group-hover:bg-navy group-hover:text-white transition-all duration-500 transform group-hover:scale-110">
+              <div className={`w-16 h-16 bg-paper rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 transform ${activeArea === idx ? 'bg-navy text-white scale-110' : 'group-hover:bg-navy group-hover:text-white group-hover:scale-110'}`}>
                 <area.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-sans font-semibold text-navy group-hover:opacity-0 transition-opacity duration-300 px-4">{area.title}</h3>
+              <h3 className={`text-xl font-sans font-semibold text-navy transition-opacity duration-300 px-4 ${activeArea === idx ? 'opacity-0' : 'lg:group-hover:opacity-0'}`}>{area.title}</h3>
               
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-navy p-8 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+              <div className={`absolute inset-0 bg-navy p-8 flex flex-col justify-center items-center text-center transition-all duration-500 ${activeArea === idx ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 lg:group-hover:opacity-100 translate-y-4 lg:group-hover:translate-y-0 pointer-events-none lg:group-hover:pointer-events-auto'}`}>
                 <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mb-4">
                   <area.icon className="w-5 h-5 text-gold" />
                 </div>
@@ -737,7 +737,7 @@ const Footer = () => {
           </div>
           
           <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40 text-center font-sans">
-            © {new Date().getFullYear()} AKYILDIZ LAW FIRM. {t('footer.rights')}
+            © {new Date().getFullYear()} {t('footer.firmName')}. {t('footer.rights')}
           </div>
         </div>
       </div>

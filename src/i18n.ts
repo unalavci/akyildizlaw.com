@@ -72,6 +72,7 @@ const resources = {
         email_label: 'E-posta'
       },
       footer: {
+        firmName: 'AKYILDIZ HUKUK VE DANIŞMANLIK',
         rights: 'Tüm hakları saklıdır.',
         privacy: 'Gizlilik Politikası',
         follow: 'Bizi Takip Edin'
@@ -147,6 +148,7 @@ const resources = {
         email_label: 'Email'
       },
       footer: {
+        firmName: 'AKYILDIZ LAW FIRM',
         rights: 'All rights reserved.',
         privacy: 'Privacy Policy',
         follow: 'Follow Us'
@@ -160,6 +162,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    lng: 'tr',
     fallbackLng: 'tr',
     interpolation: {
       escapeValue: false
