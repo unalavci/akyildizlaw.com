@@ -2,6 +2,7 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'motion/react';
+import { GoogleGenAI } from "@google/genai";
 import { 
   Scale, 
   Shield, 
@@ -351,12 +352,82 @@ const Hero = () => {
   );
 };
 
+const SealBackground = () => {
+  const [sealUrl, setSealUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const generateSeal = async () => {
+      try {
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+        const response = await ai.models.generateContent({
+          model: 'gemini-2.5-flash-image',
+          contents: {
+            parts: [
+              {
+                text: 'A macro close-up of an ancient, heavily textured and cracked deep red wax seal on aged, grainy cream parchment paper. The wax should have organic, uneven, "broken" edges and visible fine cracks in the surface. The emblem in the center is worn and historical. NO handwriting, NO modern text on the paper. Soft, warm, dramatic historical lighting. 8k resolution, museum quality photography.',
+              },
+            ],
+          },
+          config: {
+            imageConfig: {
+                aspectRatio: "1:1",
+                imageSize: "1K"
+            }
+          },
+        });
+
+        for (const part of response.candidates?.[0]?.content?.parts || []) {
+          if (part.inlineData) {
+            setSealUrl(`data:image/png;base64,${part.inlineData.data}`);
+            break;
+          }
+        }
+      } catch (error) {
+        console.error("Failed to generate seal:", error);
+      }
+    };
+
+    generateSeal();
+  }, []);
+
+  if (!sealUrl) return (
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.03] pointer-events-none select-none">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-navy">
+        <circle cx="100" cy="100" r="95" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+        <circle cx="100" cy="100" r="85" stroke="currentColor" strokeWidth="1" />
+        <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M85 90 L100 75 L115 90 M100 75 V125 M85 110 L100 125 L115 110" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+
+  return (
+    <div 
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-[0.1] pointer-events-none select-none mix-blend-multiply"
+      style={{
+        maskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
+        WebkitMaskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
+        transform: 'translate(-50%, -50%) scaleX(-1)'
+      }}
+    >
+      <img 
+        src={sealUrl} 
+        alt="Akyıldız Law Seal" 
+        className="w-full h-full object-contain brightness-105 contrast-110"
+        referrerPolicy="no-referrer"
+      />
+    </div>
+  );
+};
+
 const About = () => {
   const { t } = useTranslation();
   
   return (
-    <section id="about" className="py-24 bg-white scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="about" className="py-24 bg-white scroll-mt-20 relative overflow-hidden">
+      <SealBackground />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
