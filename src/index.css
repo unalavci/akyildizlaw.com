@@ -8,15 +8,33 @@
   --color-gold: #c5a059;
   --color-navy: #1a365d;
   --color-paper: #ffffff;
+  --color-ink: #1a365d;
+  --color-muted: rgba(26, 54, 93, 0.6);
 }
 
 @layer base {
+  :root {
+    --color-paper: #ffffff;
+    --color-ink: #1a365d;
+    --color-navy: #1a365d;
+    --color-muted: rgba(26, 54, 93, 0.6);
+  }
+
+  .dark {
+    --color-paper: #0a0f1a;
+    --color-ink: #f1f5f9;
+    --color-navy: #1e293b;
+    --color-muted: rgba(241, 245, 249, 0.6);
+  }
+
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-white text-navy font-sans antialiased relative;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    @apply font-sans antialiased relative transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -25,9 +43,14 @@
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--color-navy-rgb, 255, 255, 255), 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(var(--color-navy-rgb, 255, 255, 255), 0.2);
+}
+
+.dark .glass {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .text-balance {

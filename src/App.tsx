@@ -29,7 +29,9 @@ import {
   Umbrella,
   Stethoscope,
   AlertCircle,
-  Home as HomeIcon
+  Home as HomeIcon,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const ScrollProgressBar = () => {
@@ -103,6 +105,19 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
 
   useEffect(() => {
     document.documentElement.lang = i18n.language;
@@ -136,6 +151,10 @@ const Navbar = () => {
   const toggleLanguage = () => {
     const newLang = i18n.language === 'tr' ? 'en' : 'tr';
     i18n.changeLanguage(newLang);
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   const navLinks = [
@@ -188,11 +207,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-paper/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <Scale className="w-8 h-8 text-navy" />
-          <span className="font-serif text-2xl font-bold tracking-tighter text-navy">
+          <Scale className="w-8 h-8 text-gold" />
+          <span className="font-serif text-2xl font-bold tracking-tighter text-ink">
             AKYILDIZ<span className="text-gold">LAW</span>
           </span>
         </Link>
@@ -204,24 +223,33 @@ const Navbar = () => {
               key={link.name} 
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`text-sm font-medium uppercase tracking-widest transition-all relative group ${activeSection === link.id ? 'text-gold' : 'text-navy/80 hover:text-gold'}`}
+              className={`text-sm font-medium uppercase tracking-widest transition-all relative group ${activeSection === link.id ? 'text-gold' : 'text-ink/80 hover:text-gold'}`}
             >
               {link.name}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-gold transition-all duration-300 ${activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
             </a>
           ))}
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center gap-1 text-xs font-bold uppercase tracking-widest border border-navy/20 px-3 py-1 rounded-full hover:bg-navy hover:text-white transition-all cursor-pointer"
-          >
-            <Globe className="w-3 h-3" />
-            {i18n.language === 'tr' ? 'ENG' : 'TR'}
-          </button>
+          <div className="flex items-center gap-3 ml-4">
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 text-xs font-bold uppercase tracking-widest border border-gold/20 px-3 py-1 rounded-full hover:bg-gold hover:text-white transition-all cursor-pointer text-ink"
+            >
+              <Globe className="w-3 h-3" />
+              {i18n.language === 'tr' ? 'ENG' : 'TR'}
+            </button>
+            <button 
+              onClick={toggleDarkMode}
+              className="p-2 rounded-full border border-gold/20 hover:bg-gold hover:text-white transition-all text-ink"
+              aria-label="Toggle Dark Mode"
+            >
+              {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-navy p-2 hover:bg-navy/5 rounded-full transition-colors" 
+          className="md:hidden text-ink p-2 hover:bg-gold/5 rounded-full transition-colors" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -237,7 +265,7 @@ const Navbar = () => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="absolute top-full left-0 w-full bg-white shadow-2xl py-10 px-8 md:hidden flex flex-col gap-8 border-t border-navy/5"
+            className="absolute top-full left-0 w-full bg-paper shadow-2xl py-10 px-8 md:hidden flex flex-col gap-8 border-t border-ink/5"
           >
             {navLinks.map((link) => (
               <motion.a 
@@ -245,7 +273,7 @@ const Navbar = () => {
                 href={link.href}
                 variants={itemVariants}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-2xl font-serif transition-colors flex items-center justify-between group ${activeSection === link.id ? 'text-gold' : 'text-navy hover:text-gold'}`}
+                className={`text-2xl font-serif transition-colors flex items-center justify-between group ${activeSection === link.id ? 'text-gold' : 'text-ink hover:text-gold'}`}
               >
                 {link.name}
                 <ChevronRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${activeSection === link.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
@@ -257,7 +285,7 @@ const Navbar = () => {
                   toggleLanguage();
                   setIsMobileMenuOpen(false);
                 }}
-                className="flex items-center gap-3 text-sm font-bold tracking-widest text-gold hover:text-navy transition-colors"
+                className="flex items-center gap-3 text-sm font-bold tracking-widest text-gold hover:text-ink transition-colors"
               >
                 <Globe className="w-5 h-5" />
                 {i18n.language === 'tr' ? 'Switch to English' : 'Türkçe\'ye Geç'}
@@ -276,7 +304,7 @@ const Hero = () => {
   const y = useTransform(scrollY, [0, 500], [0, 100]);
   
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden scroll-mt-20">
+    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden scroll-mt-20 bg-paper">
       <motion.div 
         style={{ y }}
         className="absolute inset-0 z-0"
@@ -284,7 +312,7 @@ const Hero = () => {
         <img 
           src="/images/scroll-bg.png" 
           alt="Akyıldız Law Firm Tradition" 
-          className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05]"
+          className="w-full h-full object-cover opacity-25 scale-110 contrast-[1.05] dark:opacity-10"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/0 to-transparent" />
@@ -307,11 +335,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h1 className="text-xl md:text-3xl text-navy font-serif italic leading-tight text-balance">
+            <h1 className="text-xl md:text-3xl text-ink font-serif italic leading-tight text-balance">
               {t('hero.fullQuote.title')}
             </h1>
             
-            <div className="space-y-6 text-navy/90 font-sans leading-relaxed text-lg md:text-xl text-justify max-w-2xl">
+            <div className="space-y-6 text-ink/90 font-sans leading-relaxed text-lg md:text-xl text-justify max-w-2xl">
               <p>{t('hero.fullQuote.p1')}</p>
               <p>{t('hero.fullQuote.p2')}</p>
             </div>
@@ -329,7 +357,7 @@ const Hero = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
-                className="text-navy font-bold uppercase tracking-[0.3em] text-sm font-sans"
+                className="text-ink font-bold uppercase tracking-[0.3em] text-sm font-sans"
               >
                 {t('hero.fullQuote.author')}
               </motion.p>
@@ -343,7 +371,7 @@ const Hero = () => {
           transition={{ duration: 1.2 }}
           className="hidden lg:flex justify-center items-center relative"
         >
-          <div className="w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-paper relative group">
+          <div className="w-3/4 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-paper bg-paper relative group">
             <img 
               src="/images/scroll-bg.png" 
               alt="Akyıldız Law Tradition" 
@@ -361,7 +389,7 @@ const Hero = () => {
 const SealBackground = () => {
   return (
     <div 
-      className="absolute -bottom-24 -right-24 w-[500px] h-[500px] opacity-[0.15] pointer-events-none select-none mix-blend-multiply z-0"
+      className="absolute -bottom-24 -right-24 w-[500px] h-[500px] opacity-[0.25] dark:opacity-[0.35] pointer-events-none select-none z-0"
       style={{
         maskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
         WebkitMaskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
@@ -371,7 +399,7 @@ const SealBackground = () => {
       <img 
         src="/images/seal.png" 
         alt="Akyıldız Law Seal" 
-        className="w-full h-full object-contain brightness-105 contrast-110"
+        className="w-full h-full object-contain brightness-100 contrast-125 saturate-150 dark:brightness-125 dark:contrast-150"
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = 'none';
         }}
@@ -384,7 +412,7 @@ const About = () => {
   const { t } = useTranslation();
   
   return (
-    <section id="about" className="py-24 bg-white scroll-mt-20 relative overflow-hidden">
+    <section id="about" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -392,11 +420,11 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 text-navy">
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 text-ink">
               {t('about.title')}
             </h2>
             <div className="w-20 h-1 bg-gold mb-8" />
-            <div className="space-y-6 text-lg text-navy/70 leading-relaxed mb-12 text-justify">
+            <div className="space-y-6 text-lg text-ink/70 leading-relaxed mb-12 text-justify">
               <p>{t('about.p1')}</p>
               <p>{t('about.p2')}</p>
               <p>{t('about.p3')}</p>
@@ -409,7 +437,7 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-navy/5 transition-all duration-500 z-10"
+                className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gold/5 transition-all duration-500 z-10"
               >
                 <img 
                   src="/images/lawyer-portrait.png" 
@@ -423,7 +451,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 z-10"
+              className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gold/5 md:mt-16 transition-all duration-500 z-10"
             >
               <img 
                 src="/images/office-desk.png" 
@@ -461,7 +489,7 @@ const PracticeAreas = () => {
 
   return (
     <section id="practice" className="py-24 bg-paper scroll-mt-20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none dark:opacity-[0.03]">
         <img 
           src="/images/scroll-bg.png" 
           alt="Practice Background" 
@@ -471,7 +499,7 @@ const PracticeAreas = () => {
       </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 relative">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-navy">{t('practice.title')}</h2>
+          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-ink">{t('practice.title')}</h2>
           <div className="w-20 h-1 bg-gold mx-auto mb-8" />
         </div>
 
@@ -484,12 +512,12 @@ const PracticeAreas = () => {
               transition={{ delay: idx * 0.05 }}
               viewport={{ once: true }}
               onClick={() => setActiveArea(activeArea === idx ? null : idx)}
-              className={`bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-navy/5 group relative overflow-hidden h-64 flex flex-col justify-center items-center text-center cursor-pointer ${activeArea === idx ? 'shadow-xl ring-2 ring-gold/20' : ''}`}
+              className={`bg-paper p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-ink/5 group relative overflow-hidden h-64 flex flex-col justify-center items-center text-center cursor-pointer ${activeArea === idx ? 'shadow-xl ring-2 ring-gold/20' : ''}`}
             >
               <div className={`w-16 h-16 bg-paper rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 transform ${activeArea === idx ? 'bg-navy text-white scale-110' : 'group-hover:bg-navy group-hover:text-white group-hover:scale-110'}`}>
                 <area.icon className="w-7 h-7" />
               </div>
-              <h3 className={`text-xl font-sans font-semibold text-navy transition-opacity duration-300 px-4 ${activeArea === idx ? 'opacity-0' : 'lg:group-hover:opacity-0'}`}>{area.title}</h3>
+              <h3 className={`text-xl font-sans font-semibold text-ink transition-opacity duration-300 px-4 ${activeArea === idx ? 'opacity-0' : 'lg:group-hover:opacity-0'}`}>{area.title}</h3>
               
               {/* Hover Overlay */}
               <div className={`absolute inset-0 bg-navy p-8 flex flex-col justify-center items-center text-center transition-all duration-500 ${activeArea === idx ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 lg:group-hover:opacity-100 translate-y-4 lg:group-hover:translate-y-0 pointer-events-none lg:group-hover:pointer-events-auto'}`}>
@@ -634,7 +662,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white p-10 rounded-3xl text-navy shadow-2xl relative overflow-hidden"
+            className="bg-paper p-10 rounded-3xl text-ink shadow-2xl relative overflow-hidden border border-ink/5"
           >
             <AnimatePresence mode="wait">
               {isSubmitted ? (
@@ -645,11 +673,11 @@ const Contact = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   className="h-full flex flex-col items-center justify-center py-12 text-center"
                 >
-                  <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mb-6">
+                  <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
                     <CheckCircle2 className="w-10 h-10 text-emerald-500" />
                   </div>
                   <h3 className="text-2xl font-serif mb-2">{t('contact.success')}</h3>
-                  <p className="text-navy/60 text-sm">En kısa sürede size geri dönüş yapacağız.</p>
+                  <p className="text-ink/60 text-sm">En kısa sürede size geri dönüş yapacağız.</p>
                 </motion.div>
               ) : (
                 <motion.form 
@@ -661,13 +689,13 @@ const Contact = () => {
                 >
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.name')}</label>
+                      <label className="text-[10px] uppercase tracking-widest font-bold text-ink/40">{t('contact.name')}</label>
                       <input 
                         type="text" 
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full border-b py-2 outline-none transition-colors ${validationErrors.name ? 'border-red-400' : 'border-navy/10 focus:border-gold'}`} 
+                        className={`w-full bg-transparent border-b py-2 outline-none transition-colors ${validationErrors.name ? 'border-red-400' : 'border-ink/10 focus:border-gold'}`} 
                       />
                       <AnimatePresence>
                         {validationErrors.name && (
@@ -684,13 +712,13 @@ const Contact = () => {
                       </AnimatePresence>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.email')}</label>
+                      <label className="text-[10px] uppercase tracking-widest font-bold text-ink/40">{t('contact.email')}</label>
                       <input 
                         type="email" 
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`w-full border-b py-2 outline-none transition-colors ${validationErrors.email ? 'border-red-400' : 'border-navy/10 focus:border-gold'}`} 
+                        className={`w-full bg-transparent border-b py-2 outline-none transition-colors ${validationErrors.email ? 'border-red-400' : 'border-ink/10 focus:border-gold'}`} 
                       />
                       <AnimatePresence>
                         {validationErrors.email && (
@@ -708,13 +736,13 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest font-bold text-navy/40">{t('contact.message')}</label>
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-ink/40">{t('contact.message')}</label>
                     <textarea 
                       rows={4} 
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full border-b py-2 outline-none transition-colors resize-none ${validationErrors.message ? 'border-red-400' : 'border-navy/10 focus:border-gold'}`} 
+                      className={`w-full bg-transparent border-b py-2 outline-none transition-colors resize-none ${validationErrors.message ? 'border-red-400' : 'border-ink/10 focus:border-gold'}`} 
                     />
                     <AnimatePresence>
                       {validationErrors.message && (
@@ -770,7 +798,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-12 bg-paper border-t border-navy/5">
+    <footer className="py-12 bg-paper border-t border-ink/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col items-center gap-8">
           <div className="flex items-center gap-6">
@@ -790,7 +818,7 @@ const Footer = () => {
             </button>
           </div>
           
-          <div className="text-[10px] uppercase tracking-widest font-bold text-navy/40 text-center font-sans">
+          <div className="text-[10px] uppercase tracking-widest font-bold text-ink/40 text-center font-sans">
             © {new Date().getFullYear()} {t('footer.firmName')}. {t('footer.rights')}
           </div>
         </div>
@@ -836,7 +864,7 @@ const NotFound = () => {
           className="mb-8 flex justify-center"
         >
           <div className="relative">
-            <Scale className="w-24 h-24 text-navy/10" />
+            <Scale className="w-24 h-24 text-ink/10" />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-5xl font-serif font-bold text-gold">404</span>
             </div>
@@ -847,7 +875,7 @@ const NotFound = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-4xl md:text-5xl font-serif text-navy mb-6"
+          className="text-4xl md:text-5xl font-serif text-ink mb-6"
         >
           {t('notFound.title')}
         </motion.h1>
@@ -856,7 +884,7 @@ const NotFound = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-lg text-navy/60 mb-10 max-w-md mx-auto"
+          className="text-lg text-ink/60 mb-10 max-w-md mx-auto"
         >
           {t('notFound.description')}
         </motion.p>
