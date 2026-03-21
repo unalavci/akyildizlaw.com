@@ -355,11 +355,11 @@ const Hero = () => {
 const SealBackground = () => {
   return (
     <div 
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.15] pointer-events-none select-none mix-blend-multiply z-0"
+      className="absolute -bottom-24 -right-24 w-[500px] h-[500px] opacity-[0.15] pointer-events-none select-none mix-blend-multiply z-0"
       style={{
         maskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
         WebkitMaskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
-        transform: 'translate(-50%, -50%) scaleX(-1)'
+        transform: 'scaleX(-1)'
       }}
     >
       <img 
@@ -399,7 +399,6 @@ const About = () => {
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative">
-              <SealBackground />
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -418,7 +417,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500"
+              className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-navy/5 md:mt-16 transition-all duration-500 z-10"
             >
               <img 
                 src="/images/office-desk.png" 
@@ -430,6 +429,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <SealBackground />
     </section>
   );
 };
