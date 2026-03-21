@@ -364,7 +364,7 @@ const SealBackground = () => {
           contents: {
             parts: [
               {
-                text: 'A macro close-up of an ancient, heavily textured and cracked deep red wax seal on aged, grainy cream parchment paper. The wax should have organic, uneven, "broken" edges and visible fine cracks in the surface. The emblem in the center is worn and historical. NO handwriting, NO modern text on the paper. Soft, warm, dramatic historical lighting. 8k resolution, museum quality photography.',
+                text: 'A macro close-up of an AUTHENTIC, ORGANIC, CRACKED red wax seal. The edges must be IRREGULAR and BROKEN, not a perfect circle. The surface should have visible fine cracks and a matte, waxy texture. The center emblem should be a WORN, HISTORICAL crest, NOT a modern arrow or scale. Background is clean cream parchment. Dramatic side lighting to emphasize the 3D texture of the wax. 8k resolution.',
               },
             ],
           },
@@ -391,19 +391,17 @@ const SealBackground = () => {
   }, []);
 
   if (!sealUrl) return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.03] pointer-events-none select-none">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.02] pointer-events-none select-none">
       <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-navy">
-        <circle cx="100" cy="100" r="95" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-        <circle cx="100" cy="100" r="85" stroke="currentColor" strokeWidth="1" />
-        <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M85 90 L100 75 L115 90 M100 75 V125 M85 110 L100 125 L115 110" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1" strokeDasharray="10 5" />
+        <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" />
       </svg>
     </div>
   );
 
   return (
     <div 
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-[0.1] pointer-events-none select-none mix-blend-multiply"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] opacity-[0.12] pointer-events-none select-none mix-blend-multiply"
       style={{
         maskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
         WebkitMaskImage: 'radial-gradient(circle, black 25%, transparent 70%)',
